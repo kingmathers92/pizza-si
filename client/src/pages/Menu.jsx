@@ -1,10 +1,16 @@
 import { MenuList } from "../utils/MenuList";
 import MenuItem from "../components/MenuItem";
 import "../styles/Menu.css";
+import { motion } from 'framer-motion';
 
 export default function Menu() {
     return (
-        <div className="menu">
+        <motion.div
+        className="menu"
+        initial={{width: 0}}
+        animate={{width: "100%"}}
+        exit={{x: window.innerWidth, transition: { duration: 0.1 } }}
+        >
           <h1 className="menuTitle">Our Menu</h1>
           <div className="menuList">
             {MenuList.map((menuItem, key) => {
@@ -18,6 +24,6 @@ export default function Menu() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       );
 }
