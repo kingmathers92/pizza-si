@@ -16,6 +16,8 @@ export default function Home() {
       >
       <div className="headerContainer">
         <h1>PizzaSi Pizzeria</h1>
+        <br/>
+        <br/>
         <p>PIZZA TO FIT ANY TASTE</p>
         <Link to="/menu">
           <button>ORDER NOW</button>
