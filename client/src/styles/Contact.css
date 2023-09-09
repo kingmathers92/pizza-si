@@ -74,7 +74,8 @@
     height: 40px;
     border: none;
     background-color: #121619;
-    color: whitesmoke;
+    color: #dab600;
     font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
   }
