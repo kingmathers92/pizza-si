@@ -1,15 +1,15 @@
 import Location from "../assets/location.jpg";
 import "../styles/Contact.css";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
     <motion.div
       className="contact"
-      initial={{width: 0}}
-      animate={{width: "100%"}}
-      exit={{x: window.innerWidth, transition: { duration: 0.1 }}}
-      >
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+    >
       <div
         className="leftSide"
         style={{ backgroundImage: `url(${Location})` }}
@@ -33,5 +33,5 @@ export default function Contact() {
         </form>
       </div>
     </motion.div>
-  )
+  );
 }
