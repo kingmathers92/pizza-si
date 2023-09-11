@@ -1,7 +1,7 @@
-import {useState} from "react";
+import { useState } from "react";
 import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
-import ReorderIcon from '@mui/icons-material/Reorder';
+import ReorderIcon from "@mui/icons-material/Reorder";
 import "../styles/Navbar.css";
 
 export default function Navbar() {
@@ -9,12 +9,13 @@ export default function Navbar() {
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
-  }
+  };
 
   return (
     <div className="navbar">
       <div className="leftSide" id={openMenu ? "open" : "close"}>
-        <img src={logo} alt="" /><span>By Sinatra</span>
+        <img src={logo} alt="" />
+        <span>{!openMenu && "By Sinatra"}</span>
         <div className="hiddenLinks">
           <Link to="/">Home</Link>
           <Link to="/menu">Menu</Link>
