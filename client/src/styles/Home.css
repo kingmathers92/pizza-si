@@ -24,20 +24,20 @@
 
 .headerContainer p {
   padding: 0;
-  font-size: 40px;
+  font-size: 50px;
 }
 
-@supports (-webkit-text-stroke: 1px black) {
+@supports (-webkit-text-stroke: 1px whitesmoke) {
   .headerContainer h1 {
-    -webkit-text-stroke: 1px black;
-    -webkit-text-fill-color: whitesmoke;
+    -webkit-text-stroke: 1px whitesmoke;
+    -webkit-text-fill-color: black;
   }
 }
 
-@supports (-webkit-text-stroke: 1px black) {
+@supports (-webkit-text-stroke: 1px whitesmoke) {
   .headerContainer p {
-    -webkit-text-stroke: 1px black;
-    -webkit-text-fill-color: whitesmoke;
+    -webkit-text-stroke: 1px whitesmoke;
+    -webkit-text-fill-color: black;
   }
 }
 
@@ -83,12 +83,10 @@
   .headerContainer h1 {
     font-size: 40px;
     height: 30px;
-    color: white;
   }
 
   .headerContainer p {
     font-size: 30px;
-    color: white;
   }
 
   .headerContainer button {
