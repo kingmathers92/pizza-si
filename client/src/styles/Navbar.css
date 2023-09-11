@@ -41,6 +41,10 @@
   margin: 20px;
 }
 
+.navbar a:hover {
+  color: whitesmoke;
+}
+
 .navbar .rightSide button {
   background-color: transparent;
   border: none;
