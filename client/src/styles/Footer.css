@@ -20,11 +20,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  color: #121619;
   font-weight: 600;
+  gap: 10px;
 }
 
-.footer iframe {
-  padding-left: 50px;
+.footer .info a {
+  color: #121619;
+  text-decoration: none;
+  opacity: 100;
 }
+.footer .info a:hover {
+  color: whitesmoke;
+}
+
+/* .footer iframe {
+  padding-left: 50px;
+} */
