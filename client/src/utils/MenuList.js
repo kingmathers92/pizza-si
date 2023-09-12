@@ -2,8 +2,8 @@ import Pepperoni from "../assets/pepperoni.jpg";
 import Margherita from "../assets/margherita.jpg";
 import PedroTechSpecial from "../assets/pedrotechspecial.jpg";
 import Vegan from "../assets/vegan.jpg";
-import Pineapple from "../assets/pineapple.jpg";
-import Expensive from "../assets/expensive.jpg";
+// import Pineapple from "../assets/pineapple.jpg";
+// import Expensive from "../assets/expensive.jpg";
 
 export const MenuList = [
   {
@@ -27,13 +27,43 @@ export const MenuList = [
     price: 17,
   },
   {
-    name: "Pineapple Pizza",
-    image: Pineapple,
+    name: "Mexican Pizza",
+    image: "",
     price: 15.5,
   },
   {
-    name: "Very Expensive Pizza",
-    image: Expensive,
-    price: 40,
+    name: "4 Seasons Pizza",
+    image: "",
+    price: 16,
+  },
+  {
+    name: "Neptune Pizza",
+    image: "",
+    price: 17,
+  },
+  {
+    name: "Jombon Pizza",
+    image: "",
+    price: 18,
+  },
+  {
+    name: "Tuna Pizza",
+    image: "",
+    price: 16,
+  },
+  {
+    name: "Napolitana Pizza",
+    image: "",
+    price: 22,
+  },
+  {
+    name: "Baguette Farci",
+    image: "",
+    price: 14,
+  },
+  {
+    name: "Makloub",
+    image: "",
+    price: 7,
   },
 ];
