@@ -41,7 +41,7 @@ export default function Footer() {
         <LocalPhoneIcon />
         <p>99 888 044</p>
         <p>
-          Created by:{" "}
+          Created by:&nbsp;
           <a
             href="https://www.khaledbenyahya.com/"
             target="_blank"
