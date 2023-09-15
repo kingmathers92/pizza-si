@@ -1,9 +1,13 @@
 import Pepperoni from "../assets/pepperoni.jpg";
-import Margherita from "../assets/margherita.jpg";
-import PedroTechSpecial from "../assets/pedrotechspecial.jpg";
-import Vegan from "../assets/vegan.jpg";
-// import Pineapple from "../assets/pineapple.jpg";
-// import Expensive from "../assets/expensive.jpg";
+import Vegeterian from "../assets/vegeterian.jpg";
+import Mexicain from "../assets/mexicain.jpg";
+//import 4seasons from "../assets/4seasons.jpg";
+import Jombon from "../assets/jombon.png";
+//import Neptune from "../assets/vegeterian.jpg";
+import Napolitana from "../assets/napolitaine.jpg";
+import Baguette from "../assets/baguette.jpg";
+import Makloub from "../assets/makloub.jpg";
+import Sweet from "../assets/sweet.jpg";
 
 export const MenuList = [
   {
@@ -12,28 +16,18 @@ export const MenuList = [
     price: 14,
   },
   {
-    name: "Margherita Pizza",
-    image: Margherita,
-    price: 14,
-  },
-  {
-    name: "PizzaSi Special Pizza",
-    image: PedroTechSpecial,
-    price: 20,
-  },
-  {
-    name: "Vegan Pizza",
-    image: Vegan,
+    name: "Vegeterian Pizza",
+    image: Vegeterian,
     price: 17,
   },
   {
     name: "Mexican Pizza",
-    image: "",
+    image: Mexicain,
     price: 15.5,
   },
   {
     name: "4 Seasons Pizza",
-    image: "",
+    image: "4seasons",
     price: 16,
   },
   {
@@ -43,27 +37,27 @@ export const MenuList = [
   },
   {
     name: "Jombon Pizza",
-    image: "",
+    image: Jombon,
     price: 18,
   },
   {
-    name: "Tuna Pizza",
-    image: "",
-    price: 16,
-  },
-  {
     name: "Napolitana Pizza",
-    image: "",
+    image: Napolitana,
     price: 22,
   },
   {
     name: "Baguette Farci",
-    image: "",
+    image: Baguette,
     price: 14,
   },
   {
     name: "Makloub",
-    image: "",
+    image: Makloub,
+    price: 7,
+  },
+  {
+    name: "Sweet Chocolate Pizza",
+    image: Sweet,
     price: 7,
   },
 ];

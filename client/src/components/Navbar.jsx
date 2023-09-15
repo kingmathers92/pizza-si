@@ -3,6 +3,7 @@ import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import "../styles/Navbar.css";
+import LanguageMenu from "./LanguageMenu";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -32,6 +33,7 @@ export default function Navbar() {
           <ReorderIcon />
         </button>
       </div>
+      <LanguageMenu />
     </div>
   );
 }

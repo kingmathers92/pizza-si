@@ -9,8 +9,15 @@ i18next
   .use(HTTPApi)
   .init({
     fallbackLng: "en",
+    supportedLngs: ["en", "it", "fr"],
     interpolation: {
       escapeValue: false,
+    },
+    detection: {
+      order: ["navigator"],
+    },
+    backend: {
+      loadPath: "/public/locales{{lng}}/translation.json",
     },
   });
 
