@@ -35,7 +35,7 @@ export default function Navbar() {
           <ReorderIcon />
         </button>
       </div>
-      <LanguageMenu />
+      <LanguageMenu className="" />
     </div>
   );
 }

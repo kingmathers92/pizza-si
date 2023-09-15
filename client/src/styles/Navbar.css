@@ -21,7 +21,6 @@
 .navbar .leftSide span {
   color: #121619;
   padding-top: 30px;
-  padding-left: 10px;
   font-size: 15px;
   font-weight: 600;
 }
@@ -94,7 +93,7 @@
   align-items: center;
   cursor: pointer;
   color: black;
-  margin: 20px;
+  margin: 25px;
   position: relative;
 }
 
