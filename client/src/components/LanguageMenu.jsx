@@ -34,7 +34,6 @@ export default function LanguageMenu() {
     <div className="lng-menu">
       <button onClick={toggleDropdown} className="lng-btn">
         <img src={currentFlag} alt={currentLanguage} />
-        <span>{currentLanguage}</span>
         <ExpandMoreIcon
           className={`dropdown-icon ${openDropdown ? "open" : ""}`}
         />
