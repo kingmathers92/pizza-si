@@ -10,7 +10,9 @@ export default function LanguageMenu() {
   const { i18n } = useTranslation();
 
   const handleLanguage = (lng) => {
-    i18n.handleLanguage(lng);
+    console.log("Changing language to", lng);
+    i18n.changeLanguage(lng);
+    console.log("Current language is now", i18n.language);
     setOpendropdown(false);
   };
 
@@ -20,11 +22,19 @@ export default function LanguageMenu() {
 
   const currentLanguage = i18n.language;
 
+  const languageFlags = {
+    en: en,
+    it: it,
+    fr: fr,
+  };
+
+  let currentFlag = languageFlags[currentLanguage];
+
   return (
     <div className="lng-menu">
       <button onClick={toggleDropdown} className="lng-btn">
-        <img src={`../assets/${currentLanguage}.png`} alt={currentLanguage} />
-        <span>currentLanguage</span>
+        <img src={currentFlag} alt={currentLanguage} />
+        <span>{currentLanguage}</span>
         <ExpandMoreIcon
           className={`dropdown-icon ${openDropdown ? "open" : ""}`}
         />

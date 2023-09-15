@@ -17,7 +17,7 @@ i18next
       order: ["navigator"],
     },
     backend: {
-      loadPath: "/public/locales{{lng}}/translation.json",
+      loadPath: "/locales{{lng}}/translation.json",
     },
   });
 
