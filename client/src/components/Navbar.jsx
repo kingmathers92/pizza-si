@@ -15,7 +15,9 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="leftSide" id={openMenu ? "open" : "close"}>
-        <img src={logo} alt="" />
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
         <span>{!openMenu && "By Sinatra"}</span>
         <div className="hiddenLinks">
           <Link to="/">Home</Link>

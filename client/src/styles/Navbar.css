@@ -90,23 +90,6 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .navbar .rightSide a {
-    display: none;
-  }
-
-  .navbar .rightSide {
-    justify-content: flex-end;
-    padding-right: 50px;
-  }
-
-  .navbar .rightSide button {
-    display: inherit;
-  }
-}
-
-/* LanguageSelector.css */
-
 .lng-menu {
   position: relative;
   display: inline-block;
@@ -182,9 +165,19 @@
   color: black;
 }
 
-@media only screen and (min-width: 600px) {
-  .navbar .rightSide button {
+@media only screen and (max-width: 600px) {
+  .navbar .rightSide a,
+  span {
     display: none;
+  }
+
+  .navbar .rightSide {
+    justify-content: flex-end;
+    padding-right: auto;
+  }
+
+  .navbar .rightSide button {
+    display: inherit;
   }
 
   .hiddenLinks {
