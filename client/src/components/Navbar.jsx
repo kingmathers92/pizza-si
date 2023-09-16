@@ -3,8 +3,8 @@ import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import "../styles/Navbar.css";
-import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -22,17 +22,17 @@ export default function Navbar() {
         </Link>
         <span>{!openMenu && "By Sinatra"}</span>
         <div className="hiddenLinks">
-          <Link to="/">{t("hme")}</Link>
-          <Link to="/menu">Menu</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <Link to="/">{t("home")}</Link>
+          <Link to="/menu">{t("menu")}</Link>
+          <Link to="/about">{t("about")}</Link>
+          <Link to="/contact">{t("contact")}</Link>
         </div>
       </div>
       <div className="rightSide">
-        <Link to="/">Home</Link>
-        <Link to="/menu">Menu</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/">{t("home")}</Link>
+        <Link to="/menu">{t("menu")}</Link>
+        <Link to="/about">{t("about")}</Link>
+        <Link to="/contact">{t("contact")}</Link>
         <button onClick={toggleMenu}>
           <ReorderIcon />
         </button>

@@ -1,0 +1,20 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "menu": "Menu",
+    "about": "À propos",
+    "contact": "Contact",
+    "bySinatra": "Par Sinatra"
+  },
+  "header": {
+    "subtitle": "PIZZA POUR TOUS LES GOÛTS",
+    "orderNow": "COMMANDER MAINTENANT"
+  },
+  "contactForm": {
+    "title": "Contactez-nous",
+    "fullName": "Nom complet",
+    "email": "E-mail",
+    "message": "Message",
+    "sendMessage": "Envoyer le message"
+  }
+}
