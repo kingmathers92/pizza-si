@@ -16,11 +16,12 @@ export default function LanguageMenu() {
     setOpendropdown(false);
   };
 
-  const toggleDropdown = () => {
-    setOpendropdown(!openDropdown);
-  };
-
-  const currentLanguage = i18n.language;
+  // Array of languages
+  const languages = [
+    { code: "en", flag: en, name: "English" },
+    { code: "it", flag: it, name: "Italian" },
+    { code: "fr", flag: fr, name: "French" },
+  ];
 
   const languageFlags = {
     en: en,
@@ -28,30 +29,31 @@ export default function LanguageMenu() {
     fr: fr,
   };
 
-  let currentFlag = languageFlags[currentLanguage];
-
   return (
     <div className="lng-menu">
-      <button onClick={toggleDropdown} className="lng-btn">
-        <img src={currentFlag} alt={currentLanguage} />
+      <button
+        onClick={() => setOpendropdown(!openDropdown)}
+        className="lng-btn"
+      >
+        <img src={languageFlags[i18n.language]} alt={i18n.language} />
         <ExpandMoreIcon
           className={`dropdown-icon ${openDropdown ? "open" : ""}`}
         />
       </button>
       {openDropdown && (
         <div className="dropdown-content">
-          <button onClick={() => handleLanguage("en")}>
-            <img src={en} alt="" />
-            <span>{t("english")}</span>
-          </button>
-          <button onClick={() => handleLanguage("it")}>
-            <img src={it} alt="" />
-            <span>{t("italian")}</span>
-          </button>
-          <button onClick={() => handleLanguage("fr")}>
-            <img src={fr} alt="" />
-            <span>{t("french")}</span>
-          </button>
+          {/* Mapping through the array of languages & generate buttons accordingly :
+            readability, consistency, scalability & reduced repetition
+          */}
+          {languages.map((language) => (
+            <button
+              key={language.code}
+              onClick={() => handleLanguage(language.code)}
+            >
+              <img src={language.flag} alt="" />
+              <span>{t(language.name)}</span>
+            </button>
+          ))}
         </div>
       )}
     </div>
