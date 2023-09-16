@@ -2,8 +2,10 @@ import { MenuList } from "../utils/MenuList";
 import MenuItem from "../components/MenuItem";
 import "../styles/Menu.css";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Menu() {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="menu"
@@ -11,7 +13,7 @@ export default function Menu() {
       animate={{ width: "100%" }}
       exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
     >
-      <h1 className="menuTitle">Our Menu</h1>
+      <h1 className="menuTitle">{t("menuTitle")}</h1>
       <div className="menuList">
         {MenuList.map((menuItem, key) => {
           return (

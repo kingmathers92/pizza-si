@@ -1,8 +1,10 @@
 import Location from "../assets/location.jpg";
 import "../styles/Contact.css";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="contact"
@@ -15,21 +17,29 @@ export default function Contact() {
         style={{ backgroundImage: `url(${Location})` }}
       ></div>
       <div className="rightSide">
-        <h1> Contact Us</h1>
+        <h1>{t("title")}</h1>
 
         <form id="contact-form" method="POST">
-          <label htmlFor="name">Full Name</label>
-          <input name="name" placeholder="Enter full name..." type="text" />
-          <label htmlFor="email">Email</label>
-          <input name="email" placeholder="Enter email..." type="email" />
-          <label htmlFor="message">Message</label>
+          <label htmlFor="name">{t("fullName")}</label>
+          <input
+            name="name"
+            placeholder={t("fullNamePlaceholder")}
+            type="text"
+          />
+          <label htmlFor="email">{t("email")}</label>
+          <input
+            name="email"
+            placeholder={t("emailPlaceholder")}
+            type="email"
+          />
+          <label htmlFor="message">{t("message")}</label>
           <textarea
             rows="6"
-            placeholder="Enter message..."
+            placeholder={t("messagePlaceholder")}
             name="message"
             required
           ></textarea>
-          <button type="submit"> Send Message</button>
+          <button type="submit">{t("sendMessage")}</button>
         </form>
       </div>
     </motion.div>

@@ -3,8 +3,10 @@ import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import Banner from "../assets/banner.jpg";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="home"
@@ -17,9 +19,9 @@ export default function Home() {
         <h1>PizzaSi Pizzeria</h1>
         <br />
         <br />
-        <p>PIZZA TO FIT ANY TASTE</p>
+        <p>{t("subtitle")}</p>
         <Link to="/menu">
-          <button>ORDER NOW</button>
+          <button>{t("orderNow")}</button>
         </Link>
       </div>
     </motion.div>

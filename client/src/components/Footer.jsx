@@ -5,8 +5,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import LanguageIcon from "@mui/icons-material/Language";
 import "../styles/Footer.css";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <div className="footer">
       <div className="socialMedia">
@@ -41,7 +43,7 @@ export default function Footer() {
         <LocalPhoneIcon />
         <p>99 888 044</p>
         <p>
-          Created by:&nbsp;
+          {t("createdBy")}:&nbsp;
           <a
             href="https://www.khaledbenyahya.com/"
             target="_blank"

@@ -1,0 +1,23 @@
+{
+  "home": "Home",
+  "menu": "Menu",
+  "about": "About",
+  "contact": "Contact",
+  "bySinatra": "By Sinatra",
+  "subtitle": "PIZZA TO FIT ANY TASTE",
+  "orderNow": "ORDER NOW",
+  "title": "Contact Us",
+  "menuTitle": "Our Menu",
+  "fullName": "Full Name",
+  "email": "Email",
+  "message": "Message",
+  "sendMessage": "Send Message",
+  "english": "English",
+  "french": "French",
+  "italian": "Italian",
+  "createdBy": "Created by",
+  "aboutUs": "About Us",
+  "fullNamePlaceholder": "Enter full name...",
+  "emailPlaceholder": "Enter Email...",
+  "messagePlaceholder": "Enter message..."
+}

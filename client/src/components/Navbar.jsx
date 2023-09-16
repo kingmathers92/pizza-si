@@ -20,7 +20,7 @@ export default function Navbar() {
         <Link to="/">
           <img src={logo} alt="" />
         </Link>
-        <span>{!openMenu && "By Sinatra"}</span>
+        <span>{!openMenu && t("bySinatra")}</span>
         <div className="hiddenLinks">
           <Link to="/">{t("home")}</Link>
           <Link to="/menu">{t("menu")}</Link>

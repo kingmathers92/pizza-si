@@ -1,8 +1,10 @@
 import MultiplePizzas from "../assets/about1.jpg";
 import "../styles/About.css";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <motion.div
       className="about"
@@ -15,7 +17,7 @@ export default function About() {
         style={{ backgroundImage: `url(${MultiplePizzas})` }}
       ></div>
       <div className="aboutBottom">
-        <h1> ABOUT US</h1>
+        <h1>{t("aboutUs")}</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
           mollitia, molestiae quas vel sint commodi repudiandae consequuntur

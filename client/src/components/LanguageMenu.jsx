@@ -7,7 +7,7 @@ import fr from "../assets/fr.png";
 
 export default function LanguageMenu() {
   const [openDropdown, setOpendropdown] = useState(false);
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const handleLanguage = (lng) => {
     console.log("Changing language to", lng);
@@ -42,15 +42,15 @@ export default function LanguageMenu() {
         <div className="dropdown-content">
           <button onClick={() => handleLanguage("en")}>
             <img src={en} alt="" />
-            <span>English</span>
+            <span>{t("english")}</span>
           </button>
           <button onClick={() => handleLanguage("it")}>
             <img src={it} alt="" />
-            <span>Italian</span>
+            <span>{t("italian")}</span>
           </button>
           <button onClick={() => handleLanguage("fr")}>
             <img src={fr} alt="" />
-            <span>French</span>
+            <span>{t("french")}</span>
           </button>
         </div>
       )}

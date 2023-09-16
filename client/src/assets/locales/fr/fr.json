@@ -1,0 +1,23 @@
+{
+  "home": "Accueil",
+  "menu": "Menu",
+  "menuTitle": "Notre Menu",
+  "about": "À propos",
+  "contact": "Contact",
+  "bySinatra": "Par Sinatra",
+  "subtitle": "PIZZA POUR TOUS LES GOÛTS",
+  "orderNow": "COMMANDER",
+  "title": "Contactez-nous",
+  "fullName": "Nom Complet",
+  "email": "E-Mail",
+  "message": "Message",
+  "sendMessage": "Envoyer Message",
+  "english": "Anglais",
+  "french": "Français",
+  "italian": "Italien",
+  "createdBy": "Créé Par",
+  "aboutUs": "À Propos de Nous",
+  "fullNamePlaceholder": "Saisissez votre nom complet...",
+  "emailPlaceholder": "Saisissez votre e-mail...",
+  "messagePlaceholder": "Saisissez votre message..."
+}
