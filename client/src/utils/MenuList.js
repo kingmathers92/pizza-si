@@ -30,11 +30,11 @@ export const MenuList = [
     image: "4seasons",
     price: 16,
   },
-  {
-    name: "Neptune Pizza",
-    image: "",
-    price: 17,
-  },
+  // {
+  //   name: "Neptune Pizza",
+  //   image: "",
+  //   price: 17,
+  // },
   {
     name: "Jombon Pizza",
     image: Jombon,
