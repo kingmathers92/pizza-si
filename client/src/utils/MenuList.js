@@ -60,4 +60,9 @@ export const MenuList = [
     image: Sweet,
     price: 7,
   },
+  {
+    name: "Tunisian Sandwich",
+    image: "",
+    price: 5,
+  },
 ];
