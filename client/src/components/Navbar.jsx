@@ -5,13 +5,22 @@ import ReorderIcon from "@mui/icons-material/Reorder";
 import "../styles/Navbar.css";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../redux/user/userSlice";
 
 export default function Navbar() {
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const [openMenu, setOpenMenu] = useState(false);
   const { t } = useTranslation();
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
+  };
+
+  const handleSignOut = () => {
+    dispatch(signOut());
   };
 
   return (
@@ -33,6 +42,11 @@ export default function Navbar() {
         <Link to="/menu">{t("menu")}</Link>
         <Link to="/about">{t("about")}</Link>
         <Link to="/contact">{t("contact")}</Link>
+        {currentUser ? (
+          <button onClick={handleSignOut}>Sign Out</button>
+        ) : (
+          <Link to="/login">Sign In</Link>
+        )}
         <button onClick={toggleMenu}>
           <ReorderIcon />
         </button>
