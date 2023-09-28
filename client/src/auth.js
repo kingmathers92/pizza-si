@@ -13,7 +13,7 @@ export const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth(app), provider);
     return result.user;
   } catch (error) {
-    alert("Google Sign-In Error", error);
+    alert("Couldn't Sign-In with Google", error);
     throw error;
   }
 };
@@ -25,7 +25,7 @@ export const signInWithFacebook = async () => {
     const result = await signInWithPopup(auth(app), provider);
     return result.user;
   } catch (error) {
-    alert("Facebook Sign-In Error", error);
+    alert("Couldn't Sign-In with Google Facebook", error);
     throw error;
   }
 };
