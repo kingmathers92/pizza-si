@@ -2,11 +2,12 @@ import { useState } from "react";
 import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
-import "../styles/Navbar.css";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut } from "../redux/user/userSlice";
+
+import "../styles/Navbar.css";
 
 export default function Navbar() {
   const { currentUser } = useSelector((state) => state.user);

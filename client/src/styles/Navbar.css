@@ -16,6 +16,7 @@
 
 .navbar .leftSide img {
   width: 60px;
+  cursor: pointer;
 }
 
 .navbar .leftSide span {
