@@ -29,10 +29,7 @@
   text-decoration: none;
   opacity: 100;
 }
+
 .footer .info a:hover {
   color: whitesmoke;
 }
-
-/* .footer iframe {
-  padding-left: 50px;
-} */
