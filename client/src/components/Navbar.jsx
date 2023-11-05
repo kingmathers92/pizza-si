@@ -5,12 +5,14 @@ import ReorderIcon from "@mui/icons-material/Reorder";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
+import { selectUser } from "../redux/user/userSlice";
 import { signOut } from "../redux/user/userSlice";
 
 import "../styles/Navbar.css";
 
 export default function Navbar() {
-  const { currentUser } = useSelector((state) => state.user);
+  const currentUser = useSelector(selectUser);
+
   const dispatch = useDispatch();
 
   const [openMenu, setOpenMenu] = useState(false);

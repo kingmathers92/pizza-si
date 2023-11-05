@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentUser: null,
+  currentUser: null, // Ensure the initial state structure includes currentUser
 };
 
 export const userSlice = createSlice({
@@ -9,16 +9,16 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signIn: (state, action) => {
-      state.user = action.payload;
+      state.currentUser = action.payload; // Ensure to update currentUser in the reducer
     },
     signOut: (state) => {
-      state.user = null;
+      state.currentUser = null; // Clear currentUser on sign-out
     },
   },
 });
 
 export const { signIn, signOut } = userSlice.actions;
 
-export const selectUser = (state) => state.auth.user;
+export const selectUser = (state) => state.user.currentUser; // Correct the selector to point to currentUser
 
 export default userSlice.reducer;
