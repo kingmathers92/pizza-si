@@ -1,0 +1,57 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 15px;
+}
+
+.google-button,
+.facebook-button {
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: center;
+  background-color: #121619;
+  height: 80px;
+  width: 210px;
+  color: #dab600;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 15px;
+}
+
+.google-button:hover,
+.facebook-button:hover {
+  background-color: #07090a;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+@media only screen and (max-width: 650px) {
+  .login-container {
+    width: 80%;
+  }
+
+  .login-buttons {
+    flex-direction: column;
+  }
+
+  .google-login,
+  .facebook-login {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
