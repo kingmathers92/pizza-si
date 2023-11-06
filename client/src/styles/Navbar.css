@@ -152,7 +152,7 @@
   margin-right: 8px;
 }
 
-.dropdown-content button span {
+.dropdown-content button .by {
   font-weight: bold;
   color: black;
 }

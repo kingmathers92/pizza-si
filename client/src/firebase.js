@@ -1,17 +1,54 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "pizza-si-1f113.firebaseapp.com",
-  projectId: "pizza-si-1f113",
-  storageBucket: "pizza-si-1f113.appspot.com",
-  messagingSenderId: "81402966404",
-  appId: "1:81402966404:web:7b0256a9d780232b3d2dd1",
+  authDomain: "pizza-si-f0390.firebaseapp.com",
+  projectId: "pizza-si-f0390",
+  storageBucket: "pizza-si-f0390.appspot.com",
+  messagingSenderId: "389957607711",
+  appId: "1:389957607711:web:963af04cb80131b052502a",
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+
+export const signInWithGoogle = async () => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+    auth.useDeviceLanguage();
+    const result = await signInWithPopup(auth, provider);
+    return result.user;
+  } catch (error) {
+    console.error("Google Sign-In Error:", error);
+    throw error;
+  }
+};
+
+export const signInWithFacebook = async () => {
+  try {
+    const provider = new FacebookAuthProvider();
+    const auth = getAuth();
+    auth.useDeviceLanguage();
+    const result = await signInWithPopup(auth, provider);
+    return result.user;
+  } catch (error) {
+    console.error("Facebook Sign-In Error:", error);
+    throw error;
+  }
+};
+
+export const signOut = async () => {
+  try {
+    const auth = getAuth();
+    await auth.signOut();
+  } catch (error) {
+    console.error("Sign-Out Error:", error);
+    throw error;
+  }
+};

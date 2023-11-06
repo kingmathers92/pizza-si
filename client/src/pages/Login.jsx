@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { signInWithGoogle, signInWithFacebook } from "../auth.js";
+import { useDispatch } from "react-redux";
+import { signInWithGoogle, signInWithFacebook } from "../firebase.js";
 import { signIn } from "../redux/user/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import Banner2 from "../assets/pizza.jpeg";
 import { motion } from "framer-motion";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import GoogleIcon from "@mui/icons-material/Google";
 
 import "../styles/Login.css";
 
 function LoginPage() {
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.user);
-
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -44,30 +44,26 @@ function LoginPage() {
       exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
     >
       <div className="login-container">
-        {user ? (
-          <p>Welcome, {user.displayName}!</p>
-        ) : (
-          <div>
-            {errorMessage && (
-              <div className="error-message">{errorMessage}</div>
-            )}
-            <div className="login-buttons">
-              <div className="google-login">
-                <button className="google-button" onClick={handleGoogleSignIn}>
-                  Sign In with Google
-                </button>
-              </div>
-              <div className="facebook-login">
-                <button
-                  className="facebook-button"
-                  onClick={handleFacebookSignIn}
-                >
-                  Sign In with Facebook
-                </button>
-              </div>
+        <div>
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
+          <div className="login-buttons">
+            <div className="google-login">
+              <button className="google-button" onClick={handleGoogleSignIn}>
+                <GoogleIcon className="google-icon" />
+                <span>Sign In with Google</span>
+              </button>
+            </div>
+            <div className="facebook-login">
+              <button
+                className="facebook-button"
+                onClick={handleFacebookSignIn}
+              >
+                <FacebookIcon className="facebook-icon" />
+                <span>Sign In with Facebook</span>
+              </button>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </motion.div>
   );

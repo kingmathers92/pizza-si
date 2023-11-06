@@ -1,4 +1,4 @@
-import { app } from "./firebase.js";
+//import { app } from "./firebase.js";
 import { getAuth } from "firebase/auth";
 import {
   signInWithPopup,
@@ -9,18 +9,12 @@ import {
 export const signInWithGoogle = async () => {
   try {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth(app);
+    const auth = getAuth();
     auth.useDeviceLanguage();
-    const result = await signInWithPopup(auth(app), provider);
-
-    const user = result.user;
-    const email = user.email;
-    const displayName = user.displayName;
-    const photoURL = user.photoURL;
-
-    return { email, displayName, photoURL };
+    const result = await signInWithPopup(auth, provider);
+    return result.user;
   } catch (error) {
-    alert("Couldn't Sign-In with Google", error);
+    console.error("Google Sign-In Error:", error);
     throw error;
   }
 };
@@ -28,12 +22,12 @@ export const signInWithGoogle = async () => {
 export const signInWithFacebook = async () => {
   try {
     const provider = new FacebookAuthProvider();
-    const auth = getAuth(app);
+    const auth = getAuth();
     auth.useDeviceLanguage();
-    const result = await signInWithPopup(auth(app), provider);
+    const result = await signInWithPopup(auth, provider);
     return result.user;
   } catch (error) {
-    alert("Couldn't Sign-In with Google Facebook", error);
+    console.error("Facebook Sign-In Error:", error);
     throw error;
   }
 };

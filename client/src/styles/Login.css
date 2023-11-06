@@ -19,18 +19,26 @@
 
 .google-button,
 .facebook-button {
-  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #dab600;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  justify-content: center;
   background-color: #121619;
   height: 80px;
-  width: 210px;
-  color: #dab600;
+  width: 250px;
   text-decoration: none;
   font-size: 20px;
   margin: 15px;
+}
+
+.google-button .google-icon,
+.facebook-button .facebook-icon {
+  width: 30px;
+  height: 30px;
+  color: whitesmoke;
 }
 
 .google-button:hover,
@@ -41,17 +49,18 @@
 }
 
 @media only screen and (max-width: 650px) {
-  .login-container {
-    width: 80%;
-  }
-
   .login-buttons {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
-  .google-login,
-  .facebook-login {
-    width: 100%;
-    margin-bottom: 10px;
+  .google-button,
+  .facebook-button {
+    width: 250px;
+    height: 60px;
+    font-size: 16px;
+    margin: 10px 0;
   }
 }

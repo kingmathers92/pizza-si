@@ -6,17 +6,16 @@ import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
-import { signOut } from "../redux/user/userSlice";
+import { signOut } from "../firebase.js"; // Import signOut from Firebase file
 
 import "../styles/Navbar.css";
 
 export default function Navbar() {
   const currentUser = useSelector(selectUser);
-
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const [openMenu, setOpenMenu] = useState(false);
-  const { t } = useTranslation();
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -32,27 +31,33 @@ export default function Navbar() {
         <Link to="/">
           <img src={logo} alt="" />
         </Link>
-        <span>{!openMenu && t("bySinatra")}</span>
+        <span className="by">{!openMenu && t("bySinatra")}</span>
         <div className="hiddenLinks">
           <Link to="/">{t("home")}</Link>
           <Link to="/menu">{t("menu")}</Link>
           <Link to="/about">{t("about")}</Link>
           <Link to="/contact">{t("contact")}</Link>
         </div>
+        {currentUser && (
+          <div className="userProfile">
+            <img src={currentUser.displayPicture} alt={currentUser.firstName} />{" "}
+            <span>{currentUser.firstName}</span>{" "}
+            <button onClick={handleSignOut}>Sign Out</button>
+          </div>
+        )}
       </div>
       <div className="rightSide">
         <Link to="/">{t("home")}</Link>
         <Link to="/menu">{t("menu")}</Link>
         <Link to="/about">{t("about")}</Link>
         <Link to="/contact">{t("contact")}</Link>
-        {currentUser ? (
-          <button onClick={handleSignOut}>Sign Out</button>
+        {!currentUser ? (
+          <Link to="/login">{t("Sign In")}</Link>
         ) : (
-          <Link to="/login">Sign In</Link>
+          <button onClick={toggleMenu}>
+            <ReorderIcon />
+          </button>
         )}
-        <button onClick={toggleMenu}>
-          <ReorderIcon />
-        </button>
       </div>
       <LanguageMenu />
     </div>
