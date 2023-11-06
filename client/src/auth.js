@@ -31,3 +31,13 @@ export const signInWithFacebook = async () => {
     throw error;
   }
 };
+
+export const signOut = async () => {
+  try {
+    const auth = getAuth();
+    await auth.signOut();
+  } catch (error) {
+    console.error("Sign-Out Error:", error);
+    throw error;
+  }
+};

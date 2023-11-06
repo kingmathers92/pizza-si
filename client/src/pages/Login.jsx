@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signInWithGoogle, signInWithFacebook } from "../firebase.js";
+import { signInWithGoogle, signInWithFacebook } from "../auth.js";
 import { signIn } from "../redux/user/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import Banner2 from "../assets/pizza.jpeg";

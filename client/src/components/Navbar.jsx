@@ -6,7 +6,7 @@ import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
-import { signOut } from "../firebase.js"; // Import signOut from Firebase file
+import { signOut } from "../auth.js"; // Import signOut from Firebase file
 
 import "../styles/Navbar.css";
 
