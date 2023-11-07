@@ -5,8 +5,8 @@ import { signIn } from "../redux/user/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import Banner2 from "../assets/pizza.jpeg";
 import { motion } from "framer-motion";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GoogleIcon from "@mui/icons-material/Google";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillFacebook } from "react-icons/ai";
 
 import "../styles/Login.css";
 
@@ -49,7 +49,7 @@ function LoginPage() {
           <div className="login-buttons">
             <div className="google-login">
               <button className="google-button" onClick={handleGoogleSignIn}>
-                <GoogleIcon className="google-icon" />
+                <FcGoogle className="google-icon" />
                 <span>Sign In with Google</span>
               </button>
             </div>
@@ -58,7 +58,7 @@ function LoginPage() {
                 className="facebook-button"
                 onClick={handleFacebookSignIn}
               >
-                <FacebookIcon className="facebook-icon" />
+                <AiFillFacebook className="facebook-icon" />
                 <span>Sign In with Facebook</span>
               </button>
             </div>

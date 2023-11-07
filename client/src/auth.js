@@ -1,43 +1,51 @@
-//import { app } from "./firebase.js";
-import { getAuth } from "firebase/auth";
 import {
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
+  signOut as firebaseSignOut,
 } from "firebase/auth";
+import { signOut } from "./redux/user/userSlice";
+import { auth } from "./firebase.js";
+
+auth.useDeviceLanguage();
+
+const googleProvider = new GoogleAuthProvider();
 
 export const signInWithGoogle = async () => {
   try {
-    const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-    auth.useDeviceLanguage();
-    const result = await signInWithPopup(auth, provider);
-    return result.user;
+    const result = await signInWithPopup(auth, googleProvider);
+    console.log(result.user);
+    const { displayName, photoURL } = result.user;
+
+    const user = {
+      displayName,
+      photoURL,
+    };
+    return user;
   } catch (error) {
     console.error("Google Sign-In Error:", error);
     throw error;
   }
 };
 
+const fbProvider = new FacebookAuthProvider();
+
 export const signInWithFacebook = async () => {
   try {
-    const provider = new FacebookAuthProvider();
-    const auth = getAuth();
-    auth.useDeviceLanguage();
-    const result = await signInWithPopup(auth, provider);
-    return result.user;
+    const result = await signInWithPopup(auth, fbProvider);
+    console.log(result.user);
   } catch (error) {
     console.error("Facebook Sign-In Error:", error);
     throw error;
   }
 };
 
-export const signOut = async () => {
-  try {
-    const auth = getAuth();
-    await auth.signOut();
-  } catch (error) {
-    console.error("Sign-Out Error:", error);
-    throw error;
-  }
+export const handleSignOut = (dispatch) => {
+  firebaseSignOut(auth)
+    .then(() => {
+      dispatch(signOut());
+    })
+    .catch((error) => {
+      console.error("Error signing out:", error);
+    });
 };

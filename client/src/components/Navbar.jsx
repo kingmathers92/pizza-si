@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../redux/user/userSlice";
-import { signOut } from "../auth.js"; // Import signOut from Firebase file
+//import { handleSignOut } from "../auth.js";
 
 import "../styles/Navbar.css";
 
 export default function Navbar() {
   const currentUser = useSelector(selectUser);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const { t } = useTranslation();
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -21,9 +21,9 @@ export default function Navbar() {
     setOpenMenu(!openMenu);
   };
 
-  const handleSignOut = () => {
-    dispatch(signOut());
-  };
+  // const handleSignOut = () => {
+  //   dispatch(signOut());
+  // };
 
   return (
     <div className="navbar">
@@ -40,9 +40,9 @@ export default function Navbar() {
         </div>
         {currentUser && (
           <div className="userProfile">
-            <img src={currentUser.displayPicture} alt={currentUser.firstName} />{" "}
-            <span>{currentUser.firstName}</span>{" "}
-            <button onClick={handleSignOut}>Sign Out</button>
+            <img src={currentUser.photoURL} alt={currentUser.displayName} />
+            <span>{currentUser.displayName}</span>
+            <button>Sign Out</button>
           </div>
         )}
       </div>

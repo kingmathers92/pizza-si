@@ -38,7 +38,10 @@
 .facebook-button .facebook-icon {
   width: 30px;
   height: 30px;
-  color: whitesmoke;
+}
+
+.facebook-icon {
+  color: #1877f2;
 }
 
 .google-button:hover,

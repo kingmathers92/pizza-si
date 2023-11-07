@@ -11,7 +11,7 @@ export default function MenuItem({ image, name, price }) {
 }
 
 MenuItem.propTypes = {
-  image: PropTypes.string.isrequired,
-  name: PropTypes.string.isrequired,
-  price: PropTypes.number.isrequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
