@@ -81,6 +81,37 @@
   margin: 5px;
 }
 
+.userDetail {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.userDetail img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.ppp img {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.userDetail button {
+  background: transparent;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.userDetail button:hover {
+  color: white;
+  background-color: black;
+}
+
 .lng-menu {
   position: relative;
   display: inline-block;

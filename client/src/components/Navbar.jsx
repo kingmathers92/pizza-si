@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -25,8 +25,16 @@ export default function Navbar() {
     setOpenMenu(!openMenu);
   };
 
+  useEffect(() => {
+    if (currentUser && currentUser.photoURL) {
+      localStorage.setItem("userImage", currentUser.photoURL);
+    }
+  }, [currentUser]);
+
   const handleSignOut = async () => {
     try {
+      localStorage.removeItem("userImage");
+
       const user = await signOut();
       dispatch(performingSignOut(user));
       navigate("/");
@@ -49,19 +57,18 @@ export default function Navbar() {
           <Link to="/about">{t("about")}</Link>
           <Link to="/contact">{t("contact")}</Link>
         </div>
-        {currentUser && (
-          <div className="userProfile">
-            <img src={currentUser.photoURL} alt={currentUser.displayName} />
-            <span>{currentUser.displayName}</span>
-            <button onClick={handleSignOut}>Sign Out</button>
-          </div>
-        )}
       </div>
       <div className="rightSide">
         <Link to="/">{t("home")}</Link>
         <Link to="/menu">{t("menu")}</Link>
         <Link to="/about">{t("about")}</Link>
         <Link to="/contact">{t("contact")}</Link>
+        {currentUser && (
+          <div className="userDetail">
+            <img src={currentUser.photoURL} alt="avatar" />
+            <button onClick={handleSignOut}>Sign Out</button>
+          </div>
+        )}
         {!currentUser ? (
           <Link to="/login">{t("Sign In")}</Link>
         ) : (
