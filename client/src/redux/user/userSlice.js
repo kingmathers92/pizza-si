@@ -17,7 +17,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { signIn, signOut } = userSlice.actions;
+export const { signIn, signOut: performingSignOut } = userSlice.actions;
 
 export const selectUser = (state) => state.user;
 

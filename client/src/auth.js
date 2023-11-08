@@ -4,7 +4,7 @@ import {
   FacebookAuthProvider,
   signOut as firebaseSignOut,
 } from "firebase/auth";
-import { signOut } from "./redux/user/userSlice";
+import { performingSignOut } from "./redux/user/userSlice";
 import { auth } from "./firebase.js";
 
 auth.useDeviceLanguage();
@@ -40,10 +40,10 @@ export const signInWithFacebook = async () => {
   }
 };
 
-export const handleSignOut = (dispatch) => {
+export const signOut = (dispatch) => {
   firebaseSignOut(auth)
     .then(() => {
-      dispatch(signOut());
+      dispatch(performingSignOut());
     })
     .catch((error) => {
       console.error("Error signing out:", error);

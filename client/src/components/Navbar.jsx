@@ -1,19 +1,23 @@
 import { useState } from "react";
 import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { selectUser } from "../redux/user/userSlice";
-//import { handleSignOut } from "../auth.js";
+import { useNavigate } from "react-router-dom";
+import { selectUser, performingSignOut } from "../redux/user/userSlice";
+import { signOut } from "../auth.js";
 
 import "../styles/Navbar.css";
 
 export default function Navbar() {
+  const [errorMessage, setErrorMessage] = useState(null);
   const currentUser = useSelector(selectUser);
-  //const dispatch = useDispatch();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -21,13 +25,20 @@ export default function Navbar() {
     setOpenMenu(!openMenu);
   };
 
-  // const handleSignOut = () => {
-  //   dispatch(signOut());
-  // };
+  const handleSignOut = async () => {
+    try {
+      const user = await signOut();
+      dispatch(performingSignOut(user));
+      navigate("/");
+    } catch (error) {
+      setErrorMessage("Couldn't Sign Out: " + error.message);
+    }
+  };
 
   return (
     <div className="navbar">
       <div className="leftSide" id={openMenu ? "open" : "close"}>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <Link to="/">
           <img src={logo} alt="" />
         </Link>
@@ -42,7 +53,7 @@ export default function Navbar() {
           <div className="userProfile">
             <img src={currentUser.photoURL} alt={currentUser.displayName} />
             <span>{currentUser.displayName}</span>
-            <button>Sign Out</button>
+            <button onClick={handleSignOut}>Sign Out</button>
           </div>
         )}
       </div>
