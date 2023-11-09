@@ -56,19 +56,19 @@ function LoginPage() {
       <div className="login-container">
         <div>
           {errorMessage && <div className="error-message">{errorMessage}</div>}
-          <div className="login-buttons">
-            <div className="google-login">
-              <button className="google-button" onClick={handleGoogleSignIn}>
-                <FcGoogle className="google-icon" />
+          <div className="social-buttons">
+            <div className="social-login">
+              <button className="social-button" onClick={handleGoogleSignIn}>
+                <FcGoogle className="social-icon" />
                 <span>Sign In with Google</span>
               </button>
             </div>
-            {/* <div className="facebook-login">
+            {/* <div className="social-login">
               <button
-                className="facebook-button"
+                className="social-button"
                 onClick={handleFacebookSignIn}
               >
-                <AiFillFacebook className="facebook-icon" />
+                <AiFillFacebook className="social-icon" />
                 <span>Sign In with Facebook</span>
               </button>
             </div> */}
