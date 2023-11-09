@@ -68,7 +68,7 @@ function LoginPage() {
                 className="social-button"
                 onClick={handleFacebookSignIn}
               >
-                <AiFillFacebook className="social-icon" />
+                <AiFillFacebook className="fb-icon" />
                 <span>Sign In with Facebook</span>
               </button>
             </div> */}
