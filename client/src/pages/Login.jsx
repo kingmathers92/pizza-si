@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { signInWithGoogle, signInWithFacebook } from "../auth.js";
+import { signInWithGoogle } from "../auth.js";
 import { signIn } from "../redux/user/userSlice.js";
+//import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Banner2 from "../assets/pizza.jpeg";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
-import { AiFillFacebook } from "react-icons/ai";
+//import { AiFillFacebook } from "react-icons/ai";
 
 import "../styles/Login.css";
 
@@ -14,6 +15,7 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //const currentUser = useSelector(selectUser);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -25,15 +27,23 @@ function LoginPage() {
     }
   };
 
-  const handleFacebookSignIn = async () => {
-    try {
-      const user = await signInWithFacebook();
-      dispatch(signIn(user));
-      navigate("/menu");
-    } catch (error) {
-      setErrorMessage("Facebook Sign-In Error: " + error.message);
-    }
-  };
+  // const handleFacebookSignIn = async () => {
+  //   try {
+  //     const user = await signInWithFacebook();
+  //     dispatch(signIn(user));
+  //     navigate("/menu");
+  //   } catch (error) {
+  //     setErrorMessage("Facebook Sign-In Error: " + error.message);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     navigate("/menu");
+  //   } else {
+  //     navigate("/login");
+  //   }
+  // }, [currentUser]);
 
   return (
     <motion.div
@@ -53,7 +63,7 @@ function LoginPage() {
                 <span>Sign In with Google</span>
               </button>
             </div>
-            <div className="facebook-login">
+            {/* <div className="facebook-login">
               <button
                 className="facebook-button"
                 onClick={handleFacebookSignIn}
@@ -61,7 +71,7 @@ function LoginPage() {
                 <AiFillFacebook className="facebook-icon" />
                 <span>Sign In with Facebook</span>
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

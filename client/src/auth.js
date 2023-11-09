@@ -1,7 +1,8 @@
 import {
   signInWithPopup,
   GoogleAuthProvider,
-  FacebookAuthProvider,
+  // FacebookAuthProvider,
+  // updateProfile,
   signOut as firebaseSignOut,
 } from "firebase/auth";
 import { performingSignOut } from "./redux/user/userSlice";
@@ -28,17 +29,23 @@ export const signInWithGoogle = async () => {
   }
 };
 
-const fbProvider = new FacebookAuthProvider();
+// export const signInWithFacebook = async () => {
+//   const fbProvider = new FacebookAuthProvider();
+//   try {
+//     const result = await signInWithPopup(auth, fbProvider);
+//     console.log(result);
+//     const credential = FacebookAuthProvider.credentialFromResult(result);
+//     const accessToken = credential.accessToken;
 
-export const signInWithFacebook = async () => {
-  try {
-    const result = await signInWithPopup(auth, fbProvider);
-    console.log(result.user);
-  } catch (error) {
-    console.error("Facebook Sign-In Error:", error);
-    throw error;
-  }
-};
+//     let photoUrl =
+//       result.user.photoURL + "?height=500&access_token=" + accessToken;
+//     await updateProfile(auth.currentUser, { photoURL: photoUrl });
+//     return result.user;
+//   } catch (error) {
+//     console.error("Facebook Sign-In Error:", error);
+//     throw error;
+//   }
+// };
 
 export const signOut = (dispatch) => {
   firebaseSignOut(auth)
