@@ -13,7 +13,7 @@ export default function MenuItem({ id, image, name, price }) {
     <div className="menuItem">
       <div style={{ backgroundImage: `url(${image})` }}> </div>
       <h1> {name} </h1>
-      <p> DT{price} </p>
+      <p className="price"> Price: {price}DT</p>
       <button className="cart-Btn" onClick={handleAddToCart}>
         Add To cart
       </button>
