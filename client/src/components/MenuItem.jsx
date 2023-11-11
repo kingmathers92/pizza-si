@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cart/cartSlice";
@@ -6,6 +6,11 @@ export default function MenuItem({ id, image, name, prices }) {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(0);
+  const [calculatedPrice, setCalculatedPrice] = useState(prices[selectedSize]);
+
+  useEffect(() => {
+    setCalculatedPrice(prices[selectedSize] * quantity);
+  }, [selectedSize, quantity, prices]);
 
   const handleAddToCart = () => {
     if (quantity > 0) {
@@ -39,7 +44,7 @@ export default function MenuItem({ id, image, name, prices }) {
           </button>
         ))}
       </div>
-      <p className="price"> Price: {prices[selectedSize]}DT</p>
+      <p className="price"> Price: {calculatedPrice}DT</p>
       <label>
         Quantity:
         <input
