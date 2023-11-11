@@ -23,6 +23,9 @@
 /* MENU ITEM STYLING */
 
 .menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 15px;
   position: relative;
   width: 300px;
@@ -48,14 +51,49 @@
 
 .menuItem h1,
 .menuItem p {
+  text-align: center;
   margin-left: 20px;
 }
 
 .menuItem .price {
+  text-align: center;
   margin-left: 20px;
   margin-top: 5px;
+  margin: 5px 0;
   font-weight: bold;
   color: #555;
+}
+
+.menuItem .sizeButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.menuItem button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.menuItem button.selected {
+  background-color: #dab600;
+  color: #fff;
+}
+
+.menuItem label {
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.menuItem input {
+  width: 50px;
+  padding: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .cart-Btn {
@@ -71,7 +109,9 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 15px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
 }
 
 .cart-Btn:hover {

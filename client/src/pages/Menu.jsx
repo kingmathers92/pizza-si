@@ -17,16 +17,15 @@ export default function Menu() {
     >
       <h1 className="menuTitle">{t("menuTitle")}</h1>
       <div className="menuList">
-        {MenuList.map((menuItem, key) => {
-          return (
-            <MenuItem
-              key={key}
-              image={menuItem.image}
-              name={menuItem.name}
-              price={menuItem.price}
-            />
-          );
-        })}
+        {MenuList.map((menuItem) => (
+          <MenuItem
+            key={menuItem.id}
+            id={menuItem.id}
+            image={menuItem.image}
+            name={menuItem.name}
+            prices={menuItem.prices}
+          />
+        ))}
       </div>
     </motion.div>
   );

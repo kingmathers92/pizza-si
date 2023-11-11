@@ -8,59 +8,64 @@ import Makloub from "../assets/makloub.jpg";
 import Sweet from "../assets/sweet.jpg";
 
 export const MenuList = [
-  { id: 1, name: "Pepperoni Pizza", image: Pepperoni, price: 16 },
+  {
+    id: 1,
+    name: "Pepperoni Pizza",
+    image: Pepperoni,
+    prices: { M: 16, L: 18, XL: 20 },
+  },
   {
     id: 2,
     name: "Vegeterian Pizza",
     image: Vegeterian,
-    price: 17,
+    prices: { M: 17, L: 19, XL: 22 },
   },
   {
     id: 3,
     name: "Mexican Pizza",
     image: Mexicain,
-    price: 15.5,
+    prices: { M: 15.5, L: 18, XL: 21 },
   },
   {
     id: 4,
     name: "4 Seasons Pizza",
     image: "4seasons",
-    price: 16,
+    prices: { M: 16, L: 18, XL: 20 },
   },
   {
     id: 5,
     name: "Jombon Pizza",
     image: Jombon,
-    price: 18,
+    prices: { M: 18, L: 20, XL: 22 },
   },
   {
     id: 6,
     name: "Napolitana Pizza",
     image: Napolitana,
-    price: 22,
+    prices: { M: 22, L: 24, XL: 26 },
   },
   {
     id: 7,
     name: "Baguette Farci",
     image: Baguette,
-    price: 14,
+    prices: { M: 14 },
   },
   {
     id: 8,
     name: "Makloub",
     image: Makloub,
-    price: 7,
+    prices: { M: 7 },
   },
   {
     id: 9,
     name: "Sweet Chocolate Pizza",
     image: Sweet,
-    price: 12,
+    prices: { M: 12, L: 14, XL: 16 },
   },
   {
     id: 10,
     name: "Tunisian Sandwich",
     image: "",
-    price: 5,
+    prices: { M: 5 },
   },
 ];

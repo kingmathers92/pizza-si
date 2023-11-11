@@ -1,19 +1,53 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cart/cartSlice";
-export default function MenuItem({ id, image, name, price }) {
+export default function MenuItem({ id, image, name, prices }) {
   const dispatch = useDispatch();
+  const [selectedSize, setSelectedSize] = useState("M");
+  const [quantity, setQuantity] = useState(0);
 
   const handleAddToCart = () => {
-    dispatch(addItem({ id, name, price, image }));
-    console.log("added!");
+    if (quantity > 0) {
+      const selectedItem = {
+        id,
+        name,
+        prices: prices[selectedSize],
+        image,
+        size: selectedSize,
+        quantity,
+      };
+      dispatch(addItem(selectedItem));
+      console.log("added!");
+    } else {
+      console.log("choose more!");
+    }
   };
 
   return (
     <div className="menuItem">
       <div style={{ backgroundImage: `url(${image})` }}> </div>
       <h1> {name} </h1>
-      <p className="price"> Price: {price}DT</p>
+      <div>
+        {Object.keys(prices).map((size) => (
+          <button
+            key={size}
+            onClick={() => setSelectedSize(size)}
+            className={size === selectedSize ? "selected" : ""}
+          >
+            {size}
+          </button>
+        ))}
+      </div>
+      <p className="price"> Price: {prices[selectedSize]}DT</p>
+      <label>
+        Quantity:
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+        />
+      </label>
       <button className="cart-Btn" onClick={handleAddToCart}>
         Add To cart
       </button>
@@ -22,8 +56,8 @@ export default function MenuItem({ id, image, name, price }) {
 }
 
 MenuItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  prices: PropTypes.object,
 };
