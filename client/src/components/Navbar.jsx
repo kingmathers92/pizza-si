@@ -3,6 +3,7 @@ import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ReorderIcon from "@mui/icons-material/Reorder";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -15,6 +16,7 @@ import "../styles/Navbar.css";
 export default function Navbar() {
   const [errorMessage, setErrorMessage] = useState(null);
   const currentUser = useSelector(selectUser);
+  const cart = useSelector((state) => state.cart);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,6 +78,12 @@ export default function Navbar() {
             <ReorderIcon />
           </button>
         )}
+      </div>
+      <div className="cart-container">
+        <Link to="/cart">
+          <ShoppingCartIcon fontSize="medium" />
+          <span className="cartItemCount">{cart.length}</span>
+        </Link>
       </div>
       <LanguageMenu />
     </div>

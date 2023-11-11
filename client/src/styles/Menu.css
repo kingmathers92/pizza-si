@@ -23,6 +23,7 @@
 
 .menuItem {
   border-radius: 15px;
+  position: relative;
   width: 300px;
   height: 350px;
   margin: 20px;
@@ -48,6 +49,24 @@
 .menuItem h1,
 .menuItem p {
   margin-left: 20px;
+}
+
+.cart-Btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #dab600;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-Btn:hover {
+  background-color: #c0a100;
 }
 
 @media only screen and (max-width: 1300px) {

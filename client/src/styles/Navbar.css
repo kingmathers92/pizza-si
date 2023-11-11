@@ -193,6 +193,35 @@
   height: 25px;
 }
 
+.cart-container {
+  margin-right: 20px;
+  margin-top: 7px;
+  position: relative;
+}
+
+.cart-container a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.cartItemCount {
+  background-color: #dab600;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 0px;
+}
+
 @media only screen and (max-width: 900px) {
   .navbar .rightSide a {
     width: 70px;
