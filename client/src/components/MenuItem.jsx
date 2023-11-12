@@ -5,7 +5,7 @@ import { addItem } from "../redux/cart/cartSlice";
 export default function MenuItem({ id, image, name, prices }) {
   const dispatch = useDispatch();
   const [selectedSize, setSelectedSize] = useState("M");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [calculatedPrice, setCalculatedPrice] = useState(prices[selectedSize]);
 
   useEffect(() => {
