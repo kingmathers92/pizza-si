@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   height: 75px;
-  background-color: #dab600;
+  background-color: #121619;
   display: flex;
   flex-direction: row;
 }
@@ -20,7 +20,7 @@
 }
 
 .navbar .leftSide span {
-  color: #121619;
+  color: whitesmoke;
   padding-top: 30px;
   font-size: 15px;
   font-weight: 600;
@@ -35,14 +35,14 @@
 }
 
 .navbar a {
-  color: black;
+  color: whitesmoke;
   text-decoration: none;
   font-weight: bold;
   margin: 20px;
 }
 
 .navbar a:hover {
-  color: whitesmoke;
+  color: #dab600;
 }
 
 .navbar .rightSide button {
@@ -102,7 +102,7 @@
 .userDetail button {
   background: transparent;
   border: none;
-  color: black;
+  color: whitesmoke;
   font-weight: bold;
   cursor: pointer;
 }
@@ -123,7 +123,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: black;
+  color: whitesmoke;
   margin: 25px;
   position: relative;
 }
@@ -152,7 +152,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #dab600;
+  background-color: #121619;
   border-top: none;
   border-radius: 0 0 5px 5px;
   display: flex;
@@ -170,11 +170,11 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: whitesmoke;
 }
 
 .dropdown-content button:hover {
-  background-color: white;
+  background-color: #07090a;
 }
 
 .dropdown-content button img {
@@ -201,7 +201,7 @@
 
 .cart-container a {
   text-decoration: none;
-  color: black;
+  color: whitesmoke;
   display: flex;
   align-items: center;
 }

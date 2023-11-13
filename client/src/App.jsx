@@ -14,20 +14,20 @@ import Login from "./pages/Login";
 
 function App() {
   return (
-    // <Elements stripe={stripePromise}>
-    <Suspense fallback={null}>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="*" element={<AnimatedRoutes />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </Suspense>
+    //<Elements stripe={stripePromise}>
+      <Suspense fallback={null}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="*" element={<AnimatedRoutes />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </Suspense>
     //</Elements>
   );
 }
