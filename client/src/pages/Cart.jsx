@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { cleanCart } from "../redux/cart/cartSlice";
-//import CheckoutForm from "../components/CheckoutForm";
+import CheckoutForm from "../components/CheckoutForm";
 
 import "../styles/Cart.css";
 
@@ -36,6 +36,7 @@ export default function Cart() {
       <button className="clearCartBtn" onClick={handleCleanCart}>
         Clear Cart
       </button>
+      <CheckoutForm />
     </div>
   );
 }
