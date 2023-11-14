@@ -1,27 +1,29 @@
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/react-stripe-js";
 
 export function CheckoutForm() {
-  const stripe = useStripe();
-  const elements = useElements();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { paymentMethod, error } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
+    const stripe = await loadStripe(import.meta.env.VITE_STRIPE_KEY);
+
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [
+        {
+          price: "priceç1234",
+          mode: "payment",
+          successUrl: "https://your-website.com/success",
+          cancelUrl: "https://your-website.com/cancel",
+        },
+      ],
     });
 
     if (error) {
       console.log(error);
-    } else {
-      console.log(paymentMethod);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
       <button type="submit">Pay</button>
     </form>
   );

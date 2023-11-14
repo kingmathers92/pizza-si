@@ -1,20 +1,40 @@
 import { useSelector } from "react-redux";
-import CheckoutForm from "../components/CheckoutForm";
+import { useDispatch } from "react-redux";
+import { cleanCart } from "../redux/cart/cartSlice";
+//import CheckoutForm from "../components/CheckoutForm";
+
+import "../styles/Cart.css";
 
 export default function Cart() {
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart?.cart);
+  const dispatch = useDispatch();
+  console.log("Cart component rendered");
+
+  console.log(cart);
+
+  const handleCleanCart = () => {
+    dispatch(cleanCart());
+  };
 
   return (
-    <div>
+    <div className="cart-container">
       <h1>Your Cart</h1>
-      {cart.map((item) => (
-        <div key={item.id}>
-          <p>{item.name}</p>
-          <img src={item.image} alt="pizza" />
-          <p>Price: {item.price}</p>
-        </div>
-      ))}
-      <CheckoutForm />
+      {cart.length === 0 ? (
+        <p>No items in your cart</p>
+      ) : (
+        cart.map((item) => (
+          <div className="cart-item" key={item.id}>
+            <img src={item.image} alt={item.name} />
+            <div className="cart-item-details">
+              <h3>{item.name}</h3>
+              <p>Price: {item.price}DT</p>
+            </div>
+          </div>
+        ))
+      )}
+      <button className="clearCartBtn" onClick={handleCleanCart}>
+        Remove
+      </button>
     </div>
   );
 }

@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 export default function MenuItem({ id, image, name, prices }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
   const [calculatedPrice, setCalculatedPrice] = useState(prices[selectedSize]);
@@ -17,15 +19,15 @@ export default function MenuItem({ id, image, name, prices }) {
       const selectedItem = {
         id,
         name,
-        prices: prices[selectedSize],
+        price: prices[selectedSize], // This assumes `prices` is an object with different price values
         image,
         size: selectedSize,
         quantity,
       };
       dispatch(addItem(selectedItem));
-      console.log("added!");
+      navigate("/cart");
     } else {
-      console.log("choose more!");
+      console.log("Choose more!");
     }
   };
 

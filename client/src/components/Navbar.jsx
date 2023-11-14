@@ -57,6 +57,7 @@ export default function Navbar() {
           <Link to="/">{t("home")}</Link>
           <Link to="/menu">{t("menu")}</Link>
           <Link to="/about">{t("about")}</Link>
+
           <Link to="/contact">{t("contact")}</Link>
         </div>
       </div>
@@ -64,6 +65,7 @@ export default function Navbar() {
         <Link to="/">{t("home")}</Link>
         <Link to="/menu">{t("menu")}</Link>
         <Link to="/about">{t("about")}</Link>
+
         <Link to="/contact">{t("contact")}</Link>
         {currentUser && (
           <div className="userDetail">
@@ -82,7 +84,7 @@ export default function Navbar() {
       <div className="cart-container">
         <Link to="/cart">
           <ShoppingCartIcon fontSize="medium" />
-          <span className="cartItemCount">{cart.length}</span>
+          <p className="cartItemCount">{cart.length}</p>
         </Link>
       </div>
       <LanguageMenu />

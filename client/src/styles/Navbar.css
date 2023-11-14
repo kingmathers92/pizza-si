@@ -214,9 +214,6 @@
   border-radius: 50%;
   width: 18px;
   height: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: 5px;
   right: 0px;
