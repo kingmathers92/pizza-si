@@ -28,12 +28,13 @@ export default function Cart() {
             <div className="cart-item-details">
               <h3>{item.name}</h3>
               <p>Price: {item.price}DT</p>
+              <p>Quantity: {item.quantity}</p>
             </div>
           </div>
         ))
       )}
       <button className="clearCartBtn" onClick={handleCleanCart}>
-        Remove
+        Clear Cart
       </button>
     </div>
   );

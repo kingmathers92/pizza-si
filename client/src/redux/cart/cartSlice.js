@@ -8,7 +8,7 @@ export const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const { id, name, price, image, size, quantity } = action.payload;
-      const calculatedPrice = price[size] * quantity;
+      const calculatedPrice = price * quantity;
 
       const newItem = {
         id,

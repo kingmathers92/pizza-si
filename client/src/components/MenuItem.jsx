@@ -19,7 +19,7 @@ export default function MenuItem({ id, image, name, prices }) {
       const selectedItem = {
         id,
         name,
-        price: prices[selectedSize], // This assumes `prices` is an object with different price values
+        price: prices[selectedSize],
         image,
         size: selectedSize,
         quantity,

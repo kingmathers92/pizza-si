@@ -16,7 +16,7 @@ import "../styles/Navbar.css";
 export default function Navbar() {
   const [errorMessage, setErrorMessage] = useState(null);
   const currentUser = useSelector(selectUser);
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart.cart);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
