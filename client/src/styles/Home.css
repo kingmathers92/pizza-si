@@ -68,35 +68,34 @@
   }
 
   .headerContainer {
-    margin-left: 0px;
-    border-radius: 10px;
-    padding: 10px;
+    margin: 20px;
+    padding: 20px;
     width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    border-radius: 10px;
     background-color: #121619;
     color: white;
+    text-align: center;
   }
 
   .headerContainer h1 {
-    font-size: 40px;
-    height: 30px;
+    font-size: 30px;
+    margin-top: 10px;
   }
 
   .headerContainer p {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .headerContainer button {
-    background-color: white;
-    color: #121619;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
   }
 
   .headerContainer button:hover {
     background-color: rgb(225, 225, 225);
     color: #121619;
+    cursor: pointer;
+    transition: 0.3s ease-in;
   }
 }

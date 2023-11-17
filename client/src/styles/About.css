@@ -36,3 +36,30 @@
   justify-content: center;
   transform: translateY(-40px);
 }
+
+@media only screen and (max-width: 650px) {
+  .about {
+    height: auto;
+    padding: 20px;
+  }
+
+  .aboutTop {
+    height: 40vh;
+  }
+
+  .aboutBottom {
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .aboutBottom p {
+    margin: 20px;
+    width: 90%;
+  }
+
+  .about .aboutBottom h1 {
+    font-size: 30px;
+    margin-top: 20px;
+    transform: translateY(0);
+  }
+}

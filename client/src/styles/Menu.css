@@ -119,14 +119,45 @@
   transition: 0.3s ease-in;
 }
 
+/* Existing styles */
+
+/* Additional styles for responsiveness */
 @media only screen and (max-width: 1300px) {
   .menuList {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Two columns on medium-sized screens */
   }
 }
 
 @media only screen and (max-width: 800px) {
   .menuList {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* One column on smaller screens */
+  }
+
+  .menuItem {
+    width: 90%;
+    margin: 10px auto;
+    height: auto;
+  }
+
+  .menuItem div {
+    height: 100px;
+  }
+
+  .menuItem h1,
+  .menuItem p,
+  .menuItem .price,
+  .menuItem label {
+    font-size: 14px;
+  }
+
+  .menuItem button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .cart-Btn {
+    position: relative;
+    margin-top: 20px;
+    margin-right: 5px;
   }
 }
