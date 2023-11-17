@@ -8,11 +8,8 @@ import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  selectUser,
-  selectCart,
-  performingSignOut,
-} from "../redux/user/userSlice";
+import { selectUser, performingSignOut } from "../redux/user/userSlice";
+import { selectCart } from "../redux/cart/cartSlice.js";
 import { signOut } from "../auth.js";
 
 import "../styles/Navbar.css";

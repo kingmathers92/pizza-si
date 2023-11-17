@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { cleanCart } from "../redux/cart/cartSlice";
+import { selectCart, cleanCart } from "../redux/cart/cartSlice";
 //import CheckoutForm from "../components/CheckoutForm";
 
 import "../styles/Cart.css";
 
 export default function Cart() {
-  const cart = useSelector((state) => state.cart?.cart);
+  const cart = useSelector(selectCart);
   const dispatch = useDispatch();
   console.log("Cart component rendered");
 
