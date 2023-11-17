@@ -113,3 +113,40 @@
 .checkout-form button:hover {
   background-color: #b39200;
 }
+
+@media screen and (max-width: 768px) {
+  .cart-div {
+    height: auto;
+    padding: 20px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .cart-item img {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .cart-item-details {
+    padding-left: 0;
+  }
+
+  .cart-item-details h3 {
+    font-size: 16px;
+  }
+
+  .btnContainer {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .clearCartBtn,
+  .goBacktBtn {
+    width: 100%;
+    margin-top: 5px;
+  }
+}
