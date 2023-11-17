@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectCart, cleanCart } from "../redux/cart/cartSlice";
+import { selectCart, removeItem, cleanCart } from "../redux/cart/cartSlice";
+import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 //import CheckoutForm from "../components/CheckoutForm";
 
 import "../styles/Cart.css";
@@ -14,6 +16,10 @@ export default function Cart() {
 
   const handleCleanCart = () => {
     dispatch(cleanCart());
+  };
+
+  const handleRemoveItem = (itemId) => {
+    dispatch(removeItem({ id: itemId }));
   };
 
   return (
@@ -30,12 +36,21 @@ export default function Cart() {
               <p>Price: {item.price}DT</p>
               <p>Quantity: {item.quantity}</p>
             </div>
+            <CloseIcon
+              className="removeBtn"
+              onClick={() => handleRemoveItem(item.id)}
+            />
           </div>
         ))
       )}
-      <button className="clearCartBtn" onClick={handleCleanCart}>
-        Clear Cart
-      </button>
+      <div className="btnContainer">
+        <button className="clearCartBtn" onClick={handleCleanCart}>
+          Clear Cart
+        </button>
+        <Link to="/menu">
+          <button className="goBacktBtn">Go Back</button>
+        </Link>
+      </div>
     </div>
   );
 }
