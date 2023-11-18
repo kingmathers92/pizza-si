@@ -34,6 +34,10 @@ export default function Navbar() {
     }
   }, [currentUser]);
 
+  const handleSignInRedirect = () => {
+    navigate("/login");
+  };
+
   const handleSignOut = async () => {
     try {
       localStorage.removeItem("userImage");
@@ -58,30 +62,34 @@ export default function Navbar() {
           <Link to="/">{t("home")}</Link>
           <Link to="/menu">{t("menu")}</Link>
           <Link to="/about">{t("about")}</Link>
-
           <Link to="/contact">{t("contact")}</Link>
+          <div className="userDetail"></div>
         </div>
       </div>
       <div className="rightSide">
         <Link to="/">{t("home")}</Link>
         <Link to="/menu">{t("menu")}</Link>
         <Link to="/about">{t("about")}</Link>
-
         <Link to="/contact">{t("contact")}</Link>
-        {currentUser && (
-          <div className="userDetail">
-            <img src={currentUser.photoURL} alt="avatar" />
-            <button onClick={handleSignOut}>Sign Out</button>
-          </div>
-        )}
-        {!currentUser ? (
-          <Link to="/login">{t("Sign In")}</Link>
-        ) : (
-          <button onClick={toggleMenu}>
-            <ReorderIcon />
-          </button>
-        )}
+
+        <button onClick={toggleMenu}>
+          <ReorderIcon className="menuBtn" />
+        </button>
       </div>
+      {currentUser ? (
+        <div className="userDetail">
+          <img src={currentUser.photoURL} alt="avatar" className="userAvatar" />
+          <button className="signOutButton" onClick={handleSignOut}>
+            Sign Out
+          </button>
+        </div>
+      ) : (
+        <div className="userDetail">
+          <button className="signIntButton" onClick={handleSignInRedirect}>
+            {t("Sign In")}
+          </button>
+        </div>
+      )}
       <div className="cart-container">
         <Link to="/cart">
           <ShoppingCartIcon fontSize="medium" />
