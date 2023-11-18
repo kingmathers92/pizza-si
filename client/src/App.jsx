@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route exact path="/cart" element={<ProtectedRoute />}>
+          <Route element={<ProtectedRoute />}>
             <Route exact path="/cart" element={<Cart />} />
           </Route>
         </Routes>
