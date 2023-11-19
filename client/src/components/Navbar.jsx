@@ -8,8 +8,12 @@ import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectUser, performingSignOut } from "../redux/user/userSlice";
-import { selectCart } from "../redux/cart/cartSlice.js";
+import {
+  selectUser,
+  performingSignOut,
+  selectUserCart,
+} from "../redux/user/userSlice";
+//import { selectCart } from "../redux/cart/cartSlice.js";
 import { signOut } from "../auth.js";
 
 import "../styles/Navbar.css";
@@ -17,7 +21,7 @@ import "../styles/Navbar.css";
 export default function Navbar() {
   const [errorMessage, setErrorMessage] = useState(null);
   const currentUser = useSelector(selectUser);
-  const cart = useSelector(selectCart);
+  const cart = useSelector(selectUserCart);
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();

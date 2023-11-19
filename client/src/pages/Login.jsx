@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signInWithGoogle } from "../auth.js";
-import { signIn } from "../redux/user/userSlice.js";
-//import { useSelector } from "react-redux";
+import { signIn, updateUserCart } from "../redux/user/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import Banner2 from "../assets/pizza.jpeg";
 import { motion } from "framer-motion";
@@ -21,6 +20,7 @@ function LoginPage() {
     try {
       const user = await signInWithGoogle();
       dispatch(signIn(user));
+      dispatch(updateUserCart({ userId: user.displayName, cartItems: [] }));
       navigate("/menu");
     } catch (error) {
       setErrorMessage("Google Sign-In Error: " + error.message);

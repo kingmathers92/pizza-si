@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectCart, removeItem, cleanCart } from "../redux/cart/cartSlice";
+import { removeItem, cleanCart } from "../redux/cart/cartSlice";
+import { selectUser, selectUserCart } from "../redux/user/userSlice";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 //import CheckoutForm from "../components/CheckoutForm";
@@ -8,14 +9,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import "../styles/Cart.css";
 
 export default function Cart() {
-  const cart = useSelector(selectCart);
+  const currentUser = useSelector(selectUser);
+  const cart = useSelector((state) => selectUserCart(state, currentUser?.id));
   const dispatch = useDispatch();
   console.log("Cart component rendered");
 
   console.log(cart);
 
   const handleCleanCart = () => {
-    dispatch(cleanCart());
+    dispatch(cleanCart({ userId: currentUser.id }));
   };
 
   const handleRemoveItem = (itemId) => {

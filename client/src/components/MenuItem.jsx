@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addItem } from "../redux/cart/cartSlice";
 import { useNavigate } from "react-router-dom";
-export default function MenuItem({ id, image, name, prices }) {
+export default function MenuItem({ itemId, image, name, prices }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedSize, setSelectedSize] = useState("M");
@@ -17,7 +17,7 @@ export default function MenuItem({ id, image, name, prices }) {
   const handleAddToCart = () => {
     if (quantity > 0) {
       const selectedItem = {
-        id,
+        itemId,
         name,
         price: prices[selectedSize],
         image,
@@ -63,7 +63,7 @@ export default function MenuItem({ id, image, name, prices }) {
 }
 
 MenuItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  itemId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   prices: PropTypes.object,

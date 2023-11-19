@@ -3,15 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cart: [],
+    carts: {},
   },
   reducers: {
     addItem: (state, action) => {
-      const { id, name, price, image, size, quantity } = action.payload;
+      const { userId, itemId, name, price, image, size, quantity } =
+        action.payload;
       const calculatedPrice = price * quantity;
 
       const newItem = {
-        id,
+        itemId,
         name,
         price: calculatedPrice,
         image,
@@ -19,19 +20,24 @@ export const cartSlice = createSlice({
         quantity,
       };
 
-      state.cart = [...state.cart, newItem];
+      if (!state.carts[userId]) {
+        state.carts[userId] = [];
+      }
+      state.carts[userId].push(newItem);
     },
     removeItem: (state, action) => {
-      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+      const { userId, itemId } = action.payload;
+      state.carts[userId] = state.carts.filter((item) => item.id !== itemId);
     },
-    cleanCart: (state) => {
-      state.cart = [];
+    cleanCart: (state, action) => {
+      const { userId } = action.payload;
+      state.carts[userId] = [];
     },
   },
 });
 
 export const { addItem, removeItem, cleanCart } = cartSlice.actions;
 
-export const selectCart = (state) => state.cart.cart;
+export const selectCart = (state, userId) => state.cart.carts[userId] || [];
 
 export default cartSlice.reducer;
