@@ -28,7 +28,7 @@ export const {
   updateUserCart,
 } = userSlice.actions;
 
-export const selectUser = (state) => state.user.users;
+export const selectUser = (state) => state.user.user;
 
 export const selectUserCart = (state, userId) =>
   state.user?.users[userId] || [];
