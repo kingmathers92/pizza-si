@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  users: {},
+  cart: [],
 };
 
 export const userSlice = createSlice({
@@ -16,8 +16,17 @@ export const userSlice = createSlice({
       state.user = null;
     },
     updateUserCart: (state, action) => {
-      const { userId, cartItems } = action.payload;
-      state.users[userId] = cartItems;
+      state.cart = action.payload.cartItems;
+    },
+    addItem: (state, action) => {
+      state.cart.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      const itemIdToRemove = action.payload;
+      state.cart = state.cart.filter((item) => item.itemId !== itemIdToRemove);
+    },
+    cleanCart: (state) => {
+      state.cart = []; // Clear the cart
     },
   },
 });
@@ -26,11 +35,13 @@ export const {
   signIn,
   signOut: performingSignOut,
   updateUserCart,
+  addItem,
+  removeItem,
+  cleanCart,
 } = userSlice.actions;
 
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => state.user?.user;
 
-export const selectUserCart = (state, userId) =>
-  state.user?.users[userId] || [];
+export const selectUserCart = (state) => state.user?.cart;
 
 export default userSlice.reducer;

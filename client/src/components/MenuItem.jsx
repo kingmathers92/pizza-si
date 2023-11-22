@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { addItem } from "../redux/cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser, addItem } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+
 export default function MenuItem({ itemId, image, name, prices }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const currentUser = useSelector(selectUser);
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
   const [calculatedPrice, setCalculatedPrice] = useState(prices[selectedSize]);
@@ -15,7 +17,7 @@ export default function MenuItem({ itemId, image, name, prices }) {
   }, [selectedSize, quantity, prices]);
 
   const handleAddToCart = () => {
-    if (quantity > 0) {
+    if (quantity > 0 && itemId !== undefined && currentUser) {
       const selectedItem = {
         itemId,
         name,
@@ -24,10 +26,9 @@ export default function MenuItem({ itemId, image, name, prices }) {
         size: selectedSize,
         quantity,
       };
+
       dispatch(addItem(selectedItem));
       navigate("/cart");
-    } else {
-      console.log("Choose more!");
     }
   };
 
@@ -63,7 +64,8 @@ export default function MenuItem({ itemId, image, name, prices }) {
 }
 
 MenuItem.propTypes = {
-  itemId: PropTypes.number.isRequired,
+  userId: PropTypes.number,
+  itemId: PropTypes.number,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   prices: PropTypes.object,

@@ -1,27 +1,20 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { removeItem, cleanCart } from "../redux/cart/cartSlice";
-import { selectUser, selectUserCart } from "../redux/user/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { cleanCart, removeItem } from "../redux/user/userSlice";
+import { selectUserCart } from "../redux/user/userSlice";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-//import CheckoutForm from "../components/CheckoutForm";
-
 import "../styles/Cart.css";
 
 export default function Cart() {
-  const currentUser = useSelector(selectUser);
-  const cart = useSelector((state) => selectUserCart(state, currentUser?.id));
+  const cart = useSelector(selectUserCart);
   const dispatch = useDispatch();
-  console.log("Cart component rendered");
-
-  console.log(cart);
 
   const handleCleanCart = () => {
-    dispatch(cleanCart({ userId: currentUser.id }));
+    dispatch(cleanCart());
   };
 
   const handleRemoveItem = (itemId) => {
-    dispatch(removeItem({ id: itemId }));
+    dispatch(removeItem(itemId));
   };
 
   return (
@@ -31,7 +24,7 @@ export default function Cart() {
         <p>No items in your cart</p>
       ) : (
         cart.map((item) => (
-          <div className="cart-item" key={item.id}>
+          <div className="cart-item" key={item.itemId}>
             <img src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <h3>{item.name}</h3>
@@ -40,7 +33,7 @@ export default function Cart() {
             </div>
             <CloseIcon
               className="removeBtn"
-              onClick={() => handleRemoveItem(item.id)}
+              onClick={() => handleRemoveItem(item.itemId)}
             />
           </div>
         ))

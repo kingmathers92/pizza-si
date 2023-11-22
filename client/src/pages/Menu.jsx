@@ -20,7 +20,7 @@ export default function Menu() {
         {MenuList.map((menuItem) => (
           <MenuItem
             key={menuItem.id}
-            id={menuItem.id}
+            itemId={menuItem.id}
             image={menuItem.image}
             name={menuItem.name}
             prices={menuItem.prices}

@@ -13,7 +13,6 @@ import {
   performingSignOut,
   selectUserCart,
 } from "../redux/user/userSlice";
-//import { selectCart } from "../redux/cart/cartSlice.js";
 import { signOut } from "../auth.js";
 
 import "../styles/Navbar.css";
@@ -21,6 +20,7 @@ import "../styles/Navbar.css";
 export default function Navbar() {
   const [errorMessage, setErrorMessage] = useState(null);
   const currentUser = useSelector(selectUser);
+  //const userId = currentUser?.id;
   const cart = useSelector(selectUserCart);
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -82,7 +82,11 @@ export default function Navbar() {
       </div>
       {currentUser ? (
         <div className="userDetail">
-          <img src={currentUser.photoURL} alt="avatar" className="userAvatar" />
+          <img
+            src={currentUser.photoURL}
+            alt={currentUser.displayName}
+            className="userAvatar"
+          />
           <button className="signOutButton" onClick={handleSignOut}>
             Sign Out
           </button>
@@ -97,7 +101,7 @@ export default function Navbar() {
       <div className="cart-container">
         <Link to="/cart">
           <ShoppingCartIcon fontSize="medium" />
-          <p className="cartItemCount">{cart.length}</p>
+          <p className="cartItemCount">{currentUser ? cart.length : 0}</p>
         </Link>
       </div>
       <LanguageMenu />

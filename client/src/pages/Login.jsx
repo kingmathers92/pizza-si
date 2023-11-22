@@ -20,7 +20,10 @@ function LoginPage() {
     try {
       const user = await signInWithGoogle();
       dispatch(signIn(user));
-      dispatch(updateUserCart({ userId: user.displayName, cartItems: [] }));
+      if (user) {
+        dispatch(updateUserCart({ userId: user.displayName, cartItems: [] }));
+      }
+
       navigate("/menu");
     } catch (error) {
       setErrorMessage("Google Sign-In Error: " + error.message);
