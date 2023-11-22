@@ -7,6 +7,7 @@ import "../styles/Cart.css";
 
 export default function Cart() {
   const cart = useSelector(selectUserCart);
+  console.log(cart);
   const dispatch = useDispatch();
 
   const handleCleanCart = () => {
@@ -18,8 +19,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="cart-container">
-      <h1>Your Cart</h1>
+    <div className="cart-div">
       {cart.length === 0 ? (
         <p>No items in your cart</p>
       ) : (
