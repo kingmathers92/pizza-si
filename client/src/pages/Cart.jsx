@@ -9,7 +9,7 @@ import "../styles/Cart.css";
 
 export default function Cart() {
   const cart = useSelector(selectUserCart);
-  //console.log(cart);
+  console.log(cart);
   const dispatch = useDispatch();
 
   const handleCleanCart = () => {
