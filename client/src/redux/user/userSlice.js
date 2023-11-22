@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   cart: [],
+  checkoutStatus: null,
+  paymentDetails: null,
 };
 
 export const userSlice = createSlice({
@@ -28,6 +30,16 @@ export const userSlice = createSlice({
     cleanCart: (state) => {
       state.cart = [];
     },
+    startCheckout: (state) => {
+      state.checkoutStatus = "processing";
+    },
+    completeCheckout: (state, action) => {
+      state.checkoutStatus = "completed";
+      state.paymentDetails = action.payload;
+    },
+    cancelCheckout: (state) => {
+      state.checkoutStatus = "canceled";
+    },
   },
 });
 
@@ -38,10 +50,15 @@ export const {
   addItem,
   removeItem,
   cleanCart,
+  startCheckout,
+  completeCheckout,
+  cancelCheckout,
 } = userSlice.actions;
 
-export const selectUser = (state) => state.user?.user;
-
+export const selectUser = (state) => state.user.user;
 export const selectUserCart = (state) => state.user?.cart;
+
+export const selectCheckoutStatus = (state) => state.user?.checkoutStatus;
+export const selectPaymentDetails = (state) => state.user?.paymentDetails;
 
 export default userSlice.reducer;

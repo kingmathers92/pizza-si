@@ -20,7 +20,6 @@ import "../styles/Navbar.css";
 export default function Navbar() {
   const [errorMessage, setErrorMessage] = useState(null);
   const currentUser = useSelector(selectUser);
-  //const userId = currentUser?.id;
   const cart = useSelector(selectUserCart);
   const { t } = useTranslation();
   const dispatch = useDispatch();

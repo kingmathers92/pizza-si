@@ -3,10 +3,19 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
 app.use(express.json());
+app.use(express.static("public"));
+
+app.get("/success", (req, res) => {
+  res.sendFile(__dirname + "/public/success.html");
+});
+
+app.get("/cancel", (req, res) => {
+  res.sendFile(__dirname + "/public/cancel.html");
+});
 
 app.post("/payment", async (req, res) => {
   try {
-    const paymentIntent = await stripe.paymentIntent.create({
+    const paymentIntent = await stripe.paymentIntents.create({
       amout: req.body.amount,
       currency: "usd",
     });

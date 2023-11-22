@@ -3,11 +3,13 @@ import { cleanCart, removeItem } from "../redux/user/userSlice";
 import { selectUserCart } from "../redux/user/userSlice";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
+import CheckoutForm from "../components/CheckoutForm";
+
 import "../styles/Cart.css";
 
 export default function Cart() {
   const cart = useSelector(selectUserCart);
-  console.log(cart);
+  //console.log(cart);
   const dispatch = useDispatch();
 
   const handleCleanCart = () => {
@@ -17,6 +19,10 @@ export default function Cart() {
   const handleRemoveItem = (itemId) => {
     dispatch(removeItem(itemId));
   };
+
+  const totalPrice = cart.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
 
   return (
     <div className="cart-div">
@@ -46,6 +52,7 @@ export default function Cart() {
           <button className="goBacktBtn">Go Back</button>
         </Link>
       </div>
+      <CheckoutForm items={cart} totalPrice={totalPrice} />
     </div>
   );
 }
