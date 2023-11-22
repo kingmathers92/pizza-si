@@ -26,7 +26,7 @@ export const userSlice = createSlice({
       state.cart = state.cart.filter((item) => item.itemId !== itemIdToRemove);
     },
     cleanCart: (state) => {
-      state.cart = []; // Clear the cart
+      state.cart = [];
     },
   },
 });
