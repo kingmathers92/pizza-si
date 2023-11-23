@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/api", (req, res) => {
+app.use("/", (req, res) => {
   res.send("Server is running!");
 });
 
