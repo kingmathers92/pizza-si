@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
+app.use("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 app.get("/success", (req, res) => {
   res.sendFile(__dirname + "/public/success.html");
 });
