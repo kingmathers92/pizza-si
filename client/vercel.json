@@ -1,13 +1,9 @@
 {
-  "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "^/(.*)",
-      "dest": "server/index.js"
-    },
-    {
-      "src": "^/(.*)",
-      "dest": "/client/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html",
+      "status": 200
     }
   ]
 }
