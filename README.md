@@ -29,7 +29,7 @@ I utilized React along with various libraries to create a user-friendly pizza or
 
 ## Links
 
-- Live Site URL: [Live Site](pizza-si.vercel.app/)
+- Live Site URL: [Live Site](https://pizzasi.vercel.app/)
 
 ## My Process
 
