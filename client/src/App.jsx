@@ -25,7 +25,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route exact path="/cart" element={<Cart />} />
           </Route>
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path="/*" replace element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </Router>
