@@ -1,0 +1,20 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.not-found-text {
+  font-size: 1.2rem;
+  color: whitesmoke;
+  margin-bottom: 30px;
+}

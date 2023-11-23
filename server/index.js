@@ -9,6 +9,10 @@ app.use("/", (req, res) => {
   res.send("Server is running!");
 });
 
+app.get("*", (req, res) => {
+  res.status(404.send("Page Not Found"));
+});
+
 app.get("/success", (req, res) => {
   res.sendFile(__dirname + "/public/success.html");
 });
@@ -20,7 +24,7 @@ app.get("/cancel", (req, res) => {
 app.post("/payment", async (req, res) => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amout: req.body.amount,
+      amount: req.body.amount,
       currency: "usd",
     });
 

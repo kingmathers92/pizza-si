@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
+import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route exact path="/cart" element={<Cart />} />
           </Route>
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </Router>
