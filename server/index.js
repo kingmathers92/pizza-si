@@ -9,10 +9,6 @@ app.use("/", (req, res) => {
   res.send("Server is running!");
 });
 
-app.get("*", (req, res) => {
-  res.status(404.send("Page Not Found"));
-});
-
 app.get("/success", (req, res) => {
   res.sendFile(__dirname + "/public/success.html");
 });
