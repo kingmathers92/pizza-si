@@ -132,7 +132,8 @@
     width: 100%;
   }
   .menuList {
-    grid-template-columns: 1fr; /* One column on smaller screens */
+    grid-template-columns: 1fr;
+    z-index: 1;
   }
 
   .menuItem {

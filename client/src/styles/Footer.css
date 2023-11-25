@@ -35,3 +35,25 @@
 .footer .info a:hover {
   color: whitesmoke;
 }
+
+@media screen and (max-width: 600px) {
+  .footer {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .footer .info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer .info a,
+  .socialMedia svg {
+    margin: 10px 0;
+  }
+}

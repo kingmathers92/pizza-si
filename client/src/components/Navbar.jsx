@@ -3,11 +3,12 @@ import logo from "../assets/pizza_logo.png";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ReorderIcon from "@mui/icons-material/Reorder";
+import CloseIcon from "@mui/icons-material/Close";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   selectUser,
   performingSignOut,
@@ -22,12 +23,18 @@ export default function Navbar() {
   const currentUser = useSelector(selectUser);
   const cart = useSelector(selectUserCart);
   const { t } = useTranslation();
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
+
+  //close sidebar on route change
+  useEffect(() => {
+    toggleMenu();
+  }, [location]);
 
   useEffect(() => {
     if (currentUser && currentUser.photoURL) {
@@ -53,9 +60,9 @@ export default function Navbar() {
 
   return (
     <>
-      <div>
+      <div className="menuBtnContainer">
         <button onClick={toggleMenu}>
-          <ReorderIcon className="menuBtn" />
+          {!openMenu ? <ReorderIcon /> : <CloseIcon />}
         </button>
       </div>
       <nav className={`navbar ${openMenu ? "open" : ""}`}>
