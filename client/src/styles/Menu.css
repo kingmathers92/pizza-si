@@ -118,26 +118,21 @@
   transition: 0.3s ease-in;
 }
 
-/* Existing styles */
-
 /* Additional styles for responsiveness */
 @media only screen and (max-width: 1300px) {
   .menuList {
-    grid-template-columns: 1fr 1fr; /* Two columns on medium-sized screens */
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media only screen and (max-width: 800px) {
-  .menu {
-    width: 100%;
-  }
   .menuList {
     grid-template-columns: 1fr;
     z-index: 1;
   }
 
   .menuItem {
-    width: 90%;
+    max-width: 90%;
     margin: 10px auto;
     height: auto;
   }

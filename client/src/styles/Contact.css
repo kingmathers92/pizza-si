@@ -103,11 +103,11 @@ form button {
 
   form input,
   form textarea {
-    width: 100%;
+    max-width: 100%;
   }
 
   form button {
-    width: 100%;
+    max-width: 100%;
     margin-top: 20px;
   }
 }

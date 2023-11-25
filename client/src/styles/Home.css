@@ -64,17 +64,19 @@
   .home {
     justify-content: center;
     align-items: center;
-    width: 100%;
   }
 
   .headerContainer {
-    margin: 20px;
-    padding: 20px;
-    width: 80%;
+    margin: auto;
+    padding: auto;
+    width: 100%;
+    max-width: 80%;
     border-radius: 10px;
     background-color: #121619;
     color: white;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
   }
 
   .headerContainer h1 {
@@ -87,7 +89,8 @@
   }
 
   .headerContainer button {
-    margin-top: 25px;
+    margin-top: 35px;
+    left: 140px;
     padding: 10px 20px;
     font-size: 16px;
   }

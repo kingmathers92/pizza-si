@@ -125,7 +125,7 @@
   }
 
   .cart-item img {
-    width: 80%;
+    max-width: 80%;
     padding: 10px 0;
   }
 

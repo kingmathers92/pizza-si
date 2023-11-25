@@ -53,7 +53,7 @@
 
   .aboutBottom p {
     margin: 20px;
-    width: 90%;
+    max-width: 90%;
   }
 
   .about .aboutBottom h1 {

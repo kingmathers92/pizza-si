@@ -1,6 +1,6 @@
 .root {
   text-align: center;
-  width: 100%;
+  max-width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -10,4 +10,29 @@
 body {
   padding: 0;
   margin: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar .leftSide {
+    padding-left: 20px;
+  }
+
+  .navbar .rightSide {
+    display: none;
+  }
+
+  .userDetail {
+    left: 20px;
+  }
+
+  .menuList {
+    max-width: 90vw;
+    grid-template-columns: 1fr;
+  }
+
+  .contact .leftSide,
+  .contact .rightSide {
+    flex: 100%;
+    height: 200px;
+  }
 }
