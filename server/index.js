@@ -23,7 +23,6 @@ app.post("/payment", async (req, res) => {
       amount: req.body.amount,
       currency: "usd",
     });
-
     res.status(200).send({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
     alert(error);
