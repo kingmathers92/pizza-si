@@ -21,10 +21,11 @@ export default function CheckoutForm({ items, totalPrice }) {
         price: item.priceId ? item.priceId.toString() : "0",
         quantity: item.quantity,
       })),
-      payment_method_types: ["card"],
       mode: "payment",
       successUrl: "https://pizzasi.vercel.app/success",
       cancelUrl: "https://pizzasi.vercel.app/cancel",
+
+      payment_method_types: ["card"],
     });
 
     if (error) {
