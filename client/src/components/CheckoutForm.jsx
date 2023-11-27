@@ -9,6 +9,7 @@ import {
 
 export default function CheckoutForm({ items, totalPrice }) {
   const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

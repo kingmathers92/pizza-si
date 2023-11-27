@@ -28,12 +28,12 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const toggleMenu = () => {
-    setOpenMenu(!openMenu);
+    setOpenMenu((prevOpenMenu) => !prevOpenMenu);
   };
 
   //close sidebar on route change
   useEffect(() => {
-    toggleMenu();
+    toggleMenu(false);
   }, [location]);
 
   useEffect(() => {
