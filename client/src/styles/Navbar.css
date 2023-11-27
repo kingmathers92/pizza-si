@@ -253,7 +253,7 @@
     top: 0;
     right: 0;
     max-width: 50%;
-    height: 750px;
+    height: 100vh;
     padding: 20px;
     z-index: 9999;
   }
@@ -294,7 +294,7 @@
     display: block;
     position: absolute;
     top: 0px;
-    right: 85px;
+    margin-left: 75px;
     z-index: 999;
   }
 
