@@ -20,14 +20,14 @@ app.post("/payment", cors(), async (req, res) => {
       return_url: "http://localhost:3001/success",
     });
     console.log("Payment", paymentIntent);
-    res.json({
+    res.status(200).json({
       //client_secret: paymentIntent.client_secret, // Corrected property name
       message: "Payment successful",
       success: true,
     });
   } catch (error) {
     console.log("Error", error);
-    res.json({
+    res.status(500).json({
       message: "Payment failed",
       success: false,
     });

@@ -10,6 +10,8 @@ import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import SuccessPage from "./pages/SuccessPage";
+import CanceledPage from "./pages/CanceledPage";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route exact path="/cart" element={<Cart />} />
           </Route>
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/canceled" element={<CanceledPage />} />
           <Route path="/*" replace element={<NotFoundPage />} />
         </Routes>
         <Footer />

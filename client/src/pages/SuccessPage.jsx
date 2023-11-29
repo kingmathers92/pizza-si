@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/Message.css";
 
-export default function NotFoundPage() {
+export default function SuccessPage() {
   const navigate = useNavigate();
 
   const goToHome = () => {
@@ -11,8 +11,7 @@ export default function NotFoundPage() {
 
   return (
     <div className="message-container">
-      <h1 className="message-title">404 - Page Not Found</h1>
-      <p className="message-text">The page you are looking does not exist </p>
+      <h1 className="message-title">Payment Successful!</h1>
       <button className="message-btn" onClick={goToHome}>
         Go Back
       </button>

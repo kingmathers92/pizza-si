@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   startCheckout,
   completeCheckout,
   cancelCheckout,
+  cleanCart,
 } from "../redux/user/userSlice";
 import PropTypes from "prop-types";
 
@@ -36,6 +38,7 @@ export default function CheckoutForm({ items, totalPrice }) {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,11 +61,13 @@ export default function CheckoutForm({ items, totalPrice }) {
           console.log("Successful payment");
           setSuccess(true);
           dispatch(completeCheckout({ items, totalPrice }));
-          window.location.href = "/success.html";
+          dispatch(cleanCart());
+          navigate("/success");
         }
       } catch (error) {
-        dispatch(cancelCheckout());
         console.log("Error", error);
+        dispatch(cancelCheckout());
+        navigate("/canceled");
       }
     } else {
       console.log(error.message);

@@ -1,4 +1,4 @@
-.not-found {
+.message-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,18 +7,18 @@
   text-align: center;
 }
 
-.not-found-title {
+.message-title {
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.not-found-text {
+.message-text {
   font-size: 1.2rem;
   color: whitesmoke;
   margin-bottom: 30px;
 }
 
-.not-found-btn {
+.message-btn {
   background-color: #dab600;
   color: #fff;
   padding: 10px 20px;
@@ -28,6 +28,6 @@
   margin-top: 10px;
 }
 
-.not-found-btn:hover {
+.message-btn:hover {
   background-color: #cbc600;
 }
