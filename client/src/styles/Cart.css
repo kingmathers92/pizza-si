@@ -84,35 +84,6 @@
   background-color: #cbc600;
 }
 
-.checkout-form {
-  margin-top: 20px;
-}
-
-.checkout-form label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.checkout-form input,
-.checkout-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-
-.checkout-form button {
-  padding: 10px 20px;
-  background-color: #dab600;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.checkout-form button:hover {
-  background-color: #b39200;
-}
-
 @media screen and (max-width: 768px) {
   .cart-div {
     height: auto;

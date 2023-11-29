@@ -1,33 +1,36 @@
 const express = require("express");
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const app = express();
+require("dotenv").config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
+const cors = require("cors");
 
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
-app.use("/", (req, res) => {
-  res.send("Server is running!");
-});
-
-app.get("/success", (req, res) => {
-  res.sendFile(__dirname + "/public/success.html");
-});
-
-app.get("/cancel", (req, res) => {
-  res.sendFile(__dirname + "/public/cancel.html");
-});
-
-app.post("/payment", async (req, res) => {
+app.post("/payment", cors(), async (req, res) => {
+  let { amount, id } = req.body;
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: req.body.amount,
-      currency: "usd",
+      amount,
+      currency: "EUR",
+      description: "PizzaSi company",
+      payment_method: id,
+      confirm: true,
+      return_url: "http://localhost:3001/success",
     });
-    res.status(200).send({ clientSecret: paymentIntent.client_secret });
+    console.log("Payment", paymentIntent);
+    res.json({
+      //client_secret: paymentIntent.client_secret, // Corrected property name
+      message: "Payment successful",
+      success: true,
+    });
   } catch (error) {
-    alert(error);
-
-    res.status(500).send({ error: "Payment failed" });
+    console.log("Error", error);
+    res.json({
+      message: "Payment failed",
+      success: false,
+    });
   }
 });
 

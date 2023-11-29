@@ -3,7 +3,7 @@ import { cleanCart, removeItem } from "../redux/user/userSlice";
 import { selectUserCart } from "../redux/user/userSlice";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import CheckoutForm from "../components/CheckoutForm";
+import StripeContainer from "../components/StripeContainer";
 
 import "../styles/Cart.css";
 
@@ -52,7 +52,7 @@ export default function Cart() {
           <button className="goBacktBtn">Go Back</button>
         </Link>
       </div>
-      <CheckoutForm items={cart} totalPrice={totalPrice} />
+      <StripeContainer items={cart} totalPrice={totalPrice} />
     </div>
   );
 }
