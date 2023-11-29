@@ -17,7 +17,9 @@ export default function MenuItem({ itemId, image, name, prices }) {
   }, [selectedSize, quantity, prices]);
 
   const handleAddToCart = () => {
-    if (quantity > 0 && itemId !== undefined && currentUser) {
+    if (quantity > 0 && itemId !== undefined && !currentUser) {
+      navigate("/login");
+    } else if (quantity > 0 && itemId !== undefined && currentUser) {
       const selectedItem = {
         itemId,
         name,
