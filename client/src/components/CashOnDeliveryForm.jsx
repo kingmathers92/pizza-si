@@ -82,6 +82,6 @@ export default function CashOnDeliveryForm() {
 }
 
 CashOnDeliveryForm.propTypes = {
-  totalPrice: PropTypes.number,
+  amount: PropTypes.number,
   //items: PropTypes.array,
 };

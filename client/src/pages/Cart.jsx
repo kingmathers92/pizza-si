@@ -25,10 +25,6 @@ export default function Cart() {
     dispatch(removeItem(itemId));
   };
 
-  // const totalPrice = cart.reduce((acc, item) => {
-  //   return acc + item.price * item.quantity;
-  // }, 0);
-
   return (
     <div className="cart-div">
       {cart.length === 0 ? (

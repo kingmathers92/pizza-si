@@ -19,7 +19,13 @@ app.use(cors());
 
 app.post("/payment", cors(), async (req, res) => {
   let { amount, id } = req.body;
+
   try {
+    res.status(200).json({
+      message: "Processing payment...",
+      loading: true,
+    });
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: "EUR",
@@ -33,12 +39,14 @@ app.post("/payment", cors(), async (req, res) => {
       //client_secret: paymentIntent.client_secret, // Corrected property name
       message: "Payment successful",
       success: true,
+      loading: false,
     });
   } catch (error) {
     console.log("Error", error);
     res.status(500).json({
       message: "Payment failed",
       success: false,
+      loading: false,
     });
   }
 });
@@ -47,6 +55,11 @@ app.post("/create-order", cors(), async (req, res) => {
   const orderDetails = req.body;
 
   try {
+    res.status(200).json({
+      message: "Creating order...",
+      loading: true,
+    });
+
     const db = admin.database();
     const ordersRef = db.ref("orders");
 
@@ -56,12 +69,14 @@ app.post("/create-order", cors(), async (req, res) => {
     res.status(200).json({
       message: "Order created successfully",
       success: true,
+      loading: false,
     });
   } catch (error) {
     console.log("Error", error);
     res.status(500).json({
       message: "Failed to create order",
       success: false,
+      loading: false,
     });
   }
 });

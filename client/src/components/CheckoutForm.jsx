@@ -2,14 +2,18 @@ import { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  selectLoadingState,
+  startLoading,
+  stopLoading,
   startCheckout,
   completeCheckout,
   cancelCheckout,
   cleanCart,
 } from "../redux/user/userSlice";
 import PropTypes from "prop-types";
+import Loader from "react-loader-spinner";
 
 import "../styles/CheckoutForm.css";
 
@@ -33,15 +37,17 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function CheckoutForm({ items, totalPrice }) {
-  const dispatch = useDispatch();
+export default function CheckoutForm({ items, amount }) {
   const [success, setSuccess] = useState(false);
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoadingState);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(startLoading());
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -53,19 +59,22 @@ export default function CheckoutForm({ items, totalPrice }) {
         dispatch(startCheckout());
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:3001/payment", {
-          amount: totalPrice,
+          amount,
           id,
         });
+        console.log(amount);
 
         if (response.data.success) {
           console.log("Successful payment");
+          dispatch(stopLoading());
           setSuccess(true);
-          dispatch(completeCheckout({ items, totalPrice }));
+          dispatch(completeCheckout({ items, amount }));
           dispatch(cleanCart());
           navigate("/success");
         }
       } catch (error) {
         console.log("Error", error);
+        dispatch(stopLoading());
         dispatch(cancelCheckout());
         navigate("/canceled");
       }
@@ -75,7 +84,7 @@ export default function CheckoutForm({ items, totalPrice }) {
   };
 
   return (
-    <>
+    <div>
       {!success ? (
         <form onSubmit={handleSubmit}>
           <fieldset className="form-group">
@@ -83,18 +92,24 @@ export default function CheckoutForm({ items, totalPrice }) {
               <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button className="payBtn">Pay</button>
+          <button className="payBtn" type="submit">
+            {loading ? (
+              <Loader type="Oval" color="#FFF" height={20} width={20} />
+            ) : (
+              "Pay"
+            )}
+          </button>
         </form>
       ) : (
         <div>
           <h2>Payment Successful!</h2>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
 CheckoutForm.propTypes = {
-  totalPrice: PropTypes.number,
+  amount: PropTypes.number,
   items: PropTypes.array,
 };

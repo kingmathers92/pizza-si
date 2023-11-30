@@ -5,12 +5,19 @@ const initialState = {
   cart: [],
   checkoutStatus: null,
   paymentDetails: null,
+  laoding: false,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    startLoading: (state) => {
+      state.loading = true;
+    },
+    stopLoading: (state) => {
+      state.loading = false;
+    },
     signIn: (state, action) => {
       state.user = action.payload;
     },
@@ -44,6 +51,8 @@ export const userSlice = createSlice({
 });
 
 export const {
+  startLoading,
+  stopLoading,
   signIn,
   signOut: performingSignOut,
   updateUserCart,
@@ -54,6 +63,8 @@ export const {
   completeCheckout,
   cancelCheckout,
 } = userSlice.actions;
+
+export const selectLoadingState = (state) => state.user.loading;
 
 export const selectUser = (state) => state.user.user;
 export const selectUserCart = (state) => state.user.cart;
