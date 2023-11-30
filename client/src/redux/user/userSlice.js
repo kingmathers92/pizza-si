@@ -56,7 +56,7 @@ export const {
 } = userSlice.actions;
 
 export const selectUser = (state) => state.user.user;
-export const selectUserCart = (state) => state.user?.cart;
+export const selectUserCart = (state) => state.user.cart;
 
 export const selectCheckoutStatus = (state) => state.user?.checkoutStatus;
 export const selectPaymentDetails = (state) => state.user?.paymentDetails;

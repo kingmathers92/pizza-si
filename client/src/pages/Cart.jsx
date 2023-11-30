@@ -1,15 +1,20 @@
 import { useSelector, useDispatch } from "react-redux";
 import { cleanCart, removeItem } from "../redux/user/userSlice";
 import { selectUserCart } from "../redux/user/userSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import StripeContainer from "../components/StripeContainer";
+//import StripeContainer from "../components/StripeContainer";
+import { useEffect } from "react";
 
 import "../styles/Cart.css";
 
 export default function Cart() {
   const cart = useSelector(selectUserCart);
+  const navigate = useNavigate();
   console.log(cart);
+  useEffect(() => {
+    console.log("Component rendered!");
+  });
   const dispatch = useDispatch();
 
   const handleCleanCart = () => {
@@ -20,9 +25,9 @@ export default function Cart() {
     dispatch(removeItem(itemId));
   };
 
-  const totalPrice = cart.reduce((acc, item) => {
-    return acc + item.price * item.quantity;
-  }, 0);
+  // const totalPrice = cart.reduce((acc, item) => {
+  //   return acc + item.price * item.quantity;
+  // }, 0);
 
   return (
     <div className="cart-div">
@@ -52,7 +57,14 @@ export default function Cart() {
           <button className="goBacktBtn">Go Back</button>
         </Link>
       </div>
-      <StripeContainer items={cart} totalPrice={totalPrice} />
+      <div className="payment-method">
+        <button onClick={() => navigate("/stripe-checkout")}>
+          Pay with Card
+        </button>
+        <button onClick={() => navigate("/cash-on-delivery")}>
+          Cash on Delivery
+        </button>
+      </div>
     </div>
   );
 }
