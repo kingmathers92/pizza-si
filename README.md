@@ -53,10 +53,8 @@ Enabling seamless transactions, Stripe facilitated secure online payments, foste
 
 To do🔧:
 
-- [ ] Enhance responsive design for mobile users
-- [ ] Implement profile management
-- [ ] Add pay on delivery feature
-- [ ] Extend pizza customization features
+- [x] Enhance responsive design for mobile users
+- [x] Add pay on delivery feature
 - [ ] Add reviews from clients
 
 ### Useful Resources
