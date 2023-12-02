@@ -14,6 +14,7 @@ import {
 } from "../redux/user/userSlice";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
+import { useTranslation } from "react-i18next";
 
 import "../styles/CheckoutForm.css";
 
@@ -37,13 +38,22 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function CheckoutForm({ items, amount }) {
+export default function CheckoutForm({ items }) {
   const [success, setSuccess] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector(selectLoadingState);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const calculateAmount = () => {
+    let totalAmount = 0;
+    items.forEach((item) => {
+      totalAmount += item.price * item.quantity;
+    });
+    return totalAmount;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,16 +69,16 @@ export default function CheckoutForm({ items, amount }) {
         dispatch(startCheckout());
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:3001/payment", {
-          amount,
+          amount: calculateAmount(),
           id,
         });
-        console.log(amount);
+        console.log();
 
         if (response.data.success) {
           console.log("Successful payment");
           dispatch(stopLoading());
           setSuccess(true);
-          dispatch(completeCheckout({ items, amount }));
+          dispatch(completeCheckout({ items, calculateAmount }));
           dispatch(cleanCart());
           navigate("/success");
         }
@@ -85,7 +95,7 @@ export default function CheckoutForm({ items, amount }) {
 
   return (
     <div>
-      {!success ? (
+      {!success && !loading ? (
         <form onSubmit={handleSubmit}>
           <fieldset className="form-group">
             <div className="form-row">
@@ -102,7 +112,7 @@ export default function CheckoutForm({ items, amount }) {
         </form>
       ) : (
         <div>
-          <h2>Payment Successful!</h2>
+          <h2>{t("paymentSuccess")}</h2>
         </div>
       )}
     </div>

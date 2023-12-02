@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "../styles/Message.css";
 
 export default function NotFoundPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const goToHome = () => {
     navigate("/");
@@ -11,10 +13,10 @@ export default function NotFoundPage() {
 
   return (
     <div className="message-container">
-      <h1 className="message-title">404 - Page Not Found</h1>
-      <p className="message-text">The page you are looking does not exist </p>
+      <h1 className="message-title">{t("404")}</h1>
+      <p className="message-text">{t("pageNonExist")}</p>
       <button className="message-btn" onClick={goToHome}>
-        Go Back
+        {t("goBack")}
       </button>
     </div>
   );

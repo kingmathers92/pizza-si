@@ -3,14 +3,15 @@ import { cleanCart, removeItem } from "../redux/user/userSlice";
 import { selectUserCart } from "../redux/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-//import StripeContainer from "../components/StripeContainer";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import "../styles/Cart.css";
 
 export default function Cart() {
   const cart = useSelector(selectUserCart);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   console.log(cart);
   useEffect(() => {
     console.log("Component rendered!");
@@ -35,8 +36,12 @@ export default function Cart() {
             <img src={item.image} alt={item.name} />
             <div className="cart-item-details">
               <h3>{item.name}</h3>
-              <p>Price: {item.price}DT</p>
-              <p>Quantity: {item.quantity}</p>
+              <p>
+                {t("price")}: {item.price}DT
+              </p>
+              <p>
+                {t("quantity")}: {item.quantity}
+              </p>
             </div>
             <CloseIcon
               className="removeBtn"
@@ -47,18 +52,18 @@ export default function Cart() {
       )}
       <div className="btnContainer">
         <button className="clearCartBtn" onClick={handleCleanCart}>
-          Clear Cart
+          {t("clearCart")}
         </button>
         <Link to="/menu">
-          <button className="goBacktBtn">Go Back</button>
+          <button className="goBacktBtn">{t("goBack")}</button>
         </Link>
       </div>
       <div className="payment-method">
-        <button onClick={() => navigate("/stripe-checkout")}>
-          Pay with Card
+        <button className="btn" onClick={() => navigate("/stripe-checkout")}>
+          {t("payWithCard")}
         </button>
-        <button onClick={() => navigate("/cash-on-delivery")}>
-          Cash on Delivery
+        <button className="btn" onClick={() => navigate("/cash-on-delivery")}>
+          {t("cashDelivery")}
         </button>
       </div>
     </div>

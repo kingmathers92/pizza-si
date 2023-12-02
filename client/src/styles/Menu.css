@@ -28,7 +28,7 @@
   border-radius: 15px;
   position: relative;
   width: 300px;
-  height: 350px;
+  height: 400px;
   margin: 20px;
   background-color: whitesmoke;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
@@ -42,22 +42,34 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   width: 100%;
-  height: 200px;
+  flex: 0 0 33.3333%;
+  min-height: 150px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
 }
 
+.menuItem div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .menuItem h1,
 .menuItem p {
-  text-align: center;
+  text-align: justify;
   margin-left: 20px;
 }
 
 .menuItem .price {
-  text-align: center;
-  margin: 5px 0;
+  text-align: justify;
+  margin: 25px 0;
+  margin-bottom: 220px;
   font-weight: bold;
   color: #121619;
 }
@@ -78,7 +90,6 @@
 }
 
 .menuItem label {
-  margin-bottom: 50px;
   font-weight: bold;
   font-size: 16px;
   color: #555;
@@ -88,7 +99,47 @@
   width: 40px;
   padding: 5px;
   font-size: 14px;
-  margin-top: 5px;
+  //margin-bottom: 50px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  text-align: justify;
+}
+.menuItem .sizeButtons {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  bottom: 110px;
+  left: 0;
+}
+
+.menuItem .price,
+.menuItem label,
+.menuItem input {
+  position: absolute;
+  width: calc(100% - 40px);
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -190px;
+}
+
+.menuItem .price {
+  top: 25px;
+}
+
+.menuItem label {
+  position: absolute;
+  top: 85px;
+  left: 15px;
+}
+
+.menuItem input {
+  width: 40px;
+  padding: 5px;
+  font-size: 14px;
+  top: 85px;
+  left: 120px;
   border: 1px solid #555;
   border-radius: 5px;
   text-align: center;
@@ -98,8 +149,8 @@
   position: absolute;
   bottom: 10px;
   left: 50%;
-  border-radius: 5px;
   transform: translateX(-50%);
+  border-radius: 5px;
   background-color: #121619;
   color: #dab600;
   padding: 8px 16px;

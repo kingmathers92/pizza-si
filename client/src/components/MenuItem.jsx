@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, addItem } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function MenuItem({ itemId, image, name, prices }) {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export default function MenuItem({ itemId, image, name, prices }) {
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(1);
   const [calculatedPrice, setCalculatedPrice] = useState(prices[selectedSize]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setCalculatedPrice(prices[selectedSize] * quantity);
@@ -36,7 +38,10 @@ export default function MenuItem({ itemId, image, name, prices }) {
 
   return (
     <div className="menuItem">
-      <div style={{ backgroundImage: `url(${image})` }}> </div>
+      <div
+        className="menuPic"
+        style={{ backgroundImage: `url(${image})` }}
+      ></div>
       <h1> {name} </h1>
       <div>
         {Object.keys(prices).map((size) => (
@@ -49,17 +54,23 @@ export default function MenuItem({ itemId, image, name, prices }) {
           </button>
         ))}
       </div>
-      <p className="price"> Price: {calculatedPrice}DT</p>
-      <label>
-        Quantity:
-        <input
-          type="number"
-          value={quantity}
-          onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
-        />
-      </label>
+      <p className="price">
+        {" "}
+        {t("price")}: {calculatedPrice}DT
+      </p>
+      <div className="quantityContainer">
+        <label>
+          {t("quantity")}:
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
+          />
+        </label>
+      </div>
+
       <button className="cart-Btn" onClick={handleAddToCart}>
-        Add To cart
+        {t("addToCart")}
       </button>
     </div>
   );

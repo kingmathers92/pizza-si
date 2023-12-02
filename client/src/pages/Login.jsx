@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Banner2 from "../assets/pizza.jpeg";
 import { motion } from "framer-motion";
 import { FcGoogle } from "react-icons/fc";
+import { useTranslation } from "react-i18next";
 //import { AiFillFacebook } from "react-icons/ai";
 
 import "../styles/Login.css";
@@ -14,6 +15,7 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   //const currentUser = useSelector(selectUser);
 
   const handleGoogleSignIn = async () => {
@@ -63,7 +65,7 @@ function LoginPage() {
             <div className="social-login">
               <button className="social-button" onClick={handleGoogleSignIn}>
                 <FcGoogle className="social-icon" />
-                <span>Sign In with Google</span>
+                <span>{t("signWithGoogle")}</span>
               </button>
             </div>
             {/* <div className="social-login">

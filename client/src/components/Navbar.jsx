@@ -15,6 +15,7 @@ import {
   selectUserCart,
 } from "../redux/user/userSlice";
 import { signOut } from "../auth.js";
+
 import "../styles/Navbar.css";
 
 export default function Navbar() {
@@ -94,13 +95,13 @@ export default function Navbar() {
               className="userAvatar"
             />
             <button className="signOutButton" onClick={handleSignOut}>
-              Sign Out
+              {t("signOut")}
             </button>
           </div>
         ) : (
           <div className="userDetail">
             <button className="signInButton" onClick={handleSignInRedirect}>
-              {t("Sign In")}
+              {t("signIn")}
             </button>
           </div>
         )}

@@ -90,7 +90,8 @@
 }
 
 .userDetail button {
-  width: 90px;
+  width: auto;
+  max-width: 130px;
   background: transparent;
   border: 1px solid #ffffff;
   color: #ffffff;
