@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
 const cors = require("cors");
+const { body, validationResult } = require("express-validator");
 
 const admin = require("firebase-admin");
 
@@ -47,6 +48,18 @@ app.post("/payment", cors(), async (req, res) => {
 
 app.post("/create-order", cors(), async (req, res) => {
   const orderDetails = req.body;
+
+  [
+    body("formData.name").isString(),
+    body("formData.address").isString(),
+    body("formData.phone").isMobilePhone(),
+  ],
+    async (req, res) => {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+    };
 
   try {
     const db = admin.database();

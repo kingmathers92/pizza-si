@@ -1,0 +1,31 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 3 1rem;
+}
+
+label > span {
+  color: red;
+  margin-left: 0.5rem;
+}
+
+label {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+input,
+textarea {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 20rem;
+  width: 20rem;
+  box-sizing: border-box;
+}
