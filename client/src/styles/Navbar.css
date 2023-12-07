@@ -4,10 +4,9 @@
   height: 75px;
   background-color: #121619;
   display: flex;
-  flex-direction: col;
 }
 
-.navbar .leftSide {
+.leftSide {
   flex: 30%;
   height: 100%;
   display: flex;
@@ -15,19 +14,19 @@
   padding-left: 150px;
 }
 
-.navbar .leftSide img {
+.leftSide img {
   width: 60px;
   cursor: pointer;
 }
 
-.navbar .leftSide span {
+.leftSide span {
   color: whitesmoke;
   padding-top: 30px;
   font-size: 15px;
   font-weight: 600;
 }
 
-.navbar .rightSide {
+.rightSide {
   flex: 50%;
   height: 100%;
   display: flex;
@@ -46,40 +45,37 @@
   color: #dab600;
 }
 
-.navbar .rightSide button {
+.rightSide button {
   background-color: transparent;
   border: none;
   color: black;
 }
 
-.navbar .rightSide img {
+.rightSide img {
   font-size: 40px;
 }
 
-.navbar #open {
-  padding-left: 0px;
-}
-
-.navbar #open img {
+#open img {
   display: none;
 }
 
-.navbar #close img {
+#close img {
   display: inherit;
 }
 
-.navbar #open .hiddenLinks {
+#open .hiddenLinks {
   display: inherit;
   margin-left: 30px;
 }
 
-.navbar #close .hiddenLinks {
+#close .hiddenLinks {
   display: none;
 }
 
-.navbar #open a {
+#open a {
   width: 70px;
   margin: 5px;
+  padding-left: 0px;
 }
 
 .userDetail {

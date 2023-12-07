@@ -8,7 +8,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   selectUser,
   performingSignOut,
@@ -24,7 +24,6 @@ export default function Navbar() {
   const currentUser = useSelector(selectUser);
   const cart = useSelector(selectUserCart);
   const { t } = useTranslation();
-  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,10 +31,11 @@ export default function Navbar() {
     setOpenMenu((prevOpenMenu) => !prevOpenMenu);
   };
 
-  //close sidebar on route change
-  useEffect(() => {
-    toggleMenu(false);
-  }, [location]);
+  const handleCartClick = (e) => {
+    if (!openMenu) {
+      e.stopPropagation();
+    }
+  };
 
   useEffect(() => {
     if (currentUser && currentUser.photoURL) {
@@ -59,6 +59,15 @@ export default function Navbar() {
     }
   };
 
+  const commonLinks = (
+    <>
+      <Link to="/">{t("home")}</Link>
+      <Link to="/menu">{t("menu")}</Link>
+      <Link to="/about">{t("about")}</Link>
+      <Link to="/contact">{t("contact")}</Link>
+    </>
+  );
+
   return (
     <>
       <div className="menuBtnContainer">
@@ -73,20 +82,12 @@ export default function Navbar() {
             <img src={logo} alt="logo" />
           </Link>
           <span className="by">{!openMenu && t("bySinatra")}</span>
-          <div className={openMenu ? "hiddenLinks open" : "hiddenLinks"}>
-            <Link to="/">{t("home")}</Link>
-            <Link to="/menu">{t("menu")}</Link>
-            <Link to="/about">{t("about")}</Link>
-            <Link to="/contact">{t("contact")}</Link>
+          <div className={`hiddenLinks ${openMenu ? "open" : ""}`}>
+            {commonLinks}
             <div className="userDetail"></div>
           </div>
         </div>
-        <div className="rightSide">
-          <Link to="/">{t("home")}</Link>
-          <Link to="/menu">{t("menu")}</Link>
-          <Link to="/about">{t("about")}</Link>
-          <Link to="/contact">{t("contact")}</Link>
-        </div>
+        <div className="rightSide">{commonLinks}</div>
         {currentUser ? (
           <div className="userDetail">
             <img
@@ -105,8 +106,8 @@ export default function Navbar() {
             </button>
           </div>
         )}
-        <div className="cart-container">
-          <Link to="/cart">
+        <div className="cart-container" onClick={handleCartClick}>
+          <Link to="/cart" exact replace>
             <ShoppingCartIcon fontSize="medium" />
             <p className="cartItemCount">{currentUser ? cart.length : 0}</p>
           </Link>
