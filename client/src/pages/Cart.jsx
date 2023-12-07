@@ -11,12 +11,18 @@ import "../styles/Cart.css";
 export default function Cart() {
   const cart = useSelector(selectUserCart);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+
   console.log(cart);
   useEffect(() => {
     console.log("Component rendered!");
   });
-  const dispatch = useDispatch();
+
+  const totalPrice = cart.reduce(
+    (total, cartItem) => total + cartItem.price * cartItem.quantity,
+    0
+  );
 
   const handleCleanCart = () => {
     dispatch(cleanCart());
@@ -37,7 +43,7 @@ export default function Cart() {
             <div className="cart-item-details">
               <h3>{item.name}</h3>
               <p>
-                {t("price")}: {item.price}DT
+                {t("price")}: {totalPrice}DT
               </p>
               <p>
                 {t("quantity")}: {item.quantity}
@@ -62,7 +68,12 @@ export default function Cart() {
         <button className="btn" onClick={() => navigate("/stripe-checkout")}>
           {t("payWithCard")}
         </button>
-        <button className="btn" onClick={() => navigate("/cash-on-delivery")}>
+        <button
+          className="btn"
+          onClick={() =>
+            navigate("/cash-on-delivery", { state: { totalPrice } })
+          }
+        >
           {t("cashDelivery")}
         </button>
       </div>

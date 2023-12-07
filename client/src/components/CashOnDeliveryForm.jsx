@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { cleanCart } from "../redux/user/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUserCart } from "../redux/user/userSlice";
 import axios from "axios";
@@ -13,6 +13,7 @@ import "../styles/CashOnDelivery.css";
 export default function CashOnDeliveryForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const cart = useSelector(selectUserCart);
   const [formData, setFormData] = useState({
@@ -21,6 +22,8 @@ export default function CashOnDeliveryForm() {
     phone: "",
     additionalInfo: "",
   });
+
+  const { totalPrice } = location.state || { totalPrice: 0 };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +43,7 @@ export default function CashOnDeliveryForm() {
     const orderDetails = {
       cartItems: cart,
       formData: formData,
-      //totalPrice
+      totalPrice: totalPrice,
     };
 
     try {
@@ -109,11 +112,13 @@ export default function CashOnDeliveryForm() {
         }
       />
       <button type="submit">{t("submitOrder")}</button>
+      <p>Total Amount: {totalPrice} DT</p>
     </form>
   );
 }
 
 CashOnDeliveryForm.propTypes = {
-  amount: PropTypes.number,
+  totalPrice: PropTypes.number,
+
   //items: PropTypes.array,
 };
