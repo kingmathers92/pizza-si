@@ -21,11 +21,6 @@ app.post("/payment", cors(), async (req, res) => {
   let { amount, id } = req.body;
 
   try {
-    res.status(200).json({
-      message: "Processing payment...",
-      loading: true,
-    });
-
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: "EUR",
@@ -36,7 +31,6 @@ app.post("/payment", cors(), async (req, res) => {
     });
     console.log("Payment", paymentIntent);
     res.status(200).json({
-      //client_secret: paymentIntent.client_secret, // Corrected property name
       message: "Payment successful",
       success: true,
       loading: false,
@@ -55,11 +49,6 @@ app.post("/create-order", cors(), async (req, res) => {
   const orderDetails = req.body;
 
   try {
-    res.status(200).json({
-      message: "Creating order...",
-      loading: true,
-    });
-
     const db = admin.database();
     const ordersRef = db.ref("orders");
 
