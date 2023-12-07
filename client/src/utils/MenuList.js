@@ -58,7 +58,7 @@ export const MenuList = [
   },
   {
     id: 9,
-    name: "Sweet Chocolate Pizza",
+    name: "Chocolate Pizza",
     image: Sweet,
     prices: { M: 12, L: 14, XL: 16 },
   },

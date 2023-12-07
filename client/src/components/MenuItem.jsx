@@ -53,25 +53,24 @@ export default function MenuItem({ itemId, image, name, prices }) {
             {size}
           </button>
         ))}
-      </div>
-      <p className="price">
-        {" "}
-        {t("price")}: {calculatedPrice}DT
-      </p>
-      <div className="quantityContainer">
-        <label>
+
+        <p className="quantity">
           {t("quantity")}:
           <input
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
           />
-        </label>
+        </p>
+        <p className="price">
+          {t("price")}: {calculatedPrice}DT
+        </p>
       </div>
-
-      <button className="cart-Btn" onClick={handleAddToCart}>
-        {t("addToCart")}
-      </button>
+      <div className="btnContainer">
+        <button className="cart-Btn" onClick={handleAddToCart}>
+          {t("addToCart")}
+        </button>
+      </div>
     </div>
   );
 }
