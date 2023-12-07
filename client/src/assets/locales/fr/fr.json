@@ -34,6 +34,7 @@
   "orderSuccess": "Commande Réussi!",
   "paymentCancel": "Payment Annulée!",
   "orderCanceled": "Commande Annulée",
+  "totalPrice": "Prix Total",
   "goBack": "Retourner",
   "clearCart": "Vider Panier",
   "payWithCard": "Payer Avec Carte",

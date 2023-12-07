@@ -34,7 +34,8 @@ export default function CashOnDeliveryForm() {
     }
 
     // Phone number validation with regex
-    const phoneRegex = /^\d{10}£/;
+    const phoneRegex =
+      /^(\()?[2-9]{1}\d{2}(\))?(-|\s)?[2-9]{1}\d{2}(-|\s)\d{4}$/;
     if (!phoneRegex.test(formData.phone)) {
       alert("Please enter a valid phone number");
       return;
@@ -112,13 +113,13 @@ export default function CashOnDeliveryForm() {
         }
       />
       <button type="submit">{t("submitOrder")}</button>
-      <p>Total Amount: {totalPrice} DT</p>
+      <p>
+        {t("totalPrice")}: {totalPrice} DT
+      </p>
     </form>
   );
 }
 
 CashOnDeliveryForm.propTypes = {
   totalPrice: PropTypes.number,
-
-  //items: PropTypes.array,
 };

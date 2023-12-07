@@ -34,6 +34,7 @@
   "orderSuccess": "Order Successful!",
   "paymentCancel": "Payment Canceled!",
   "orderCanceled": "Order Canceled",
+  "totalPrice": "Total Amount",
   "goBack": "Go Back",
   "clearCart": "Clear Cart",
   "payWithCard": "Pay With Card",
