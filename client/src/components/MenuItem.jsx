@@ -25,7 +25,7 @@ export default function MenuItem({ itemId, image, name, prices }) {
       const selectedItem = {
         itemId,
         name,
-        price: prices[selectedSize],
+        price: calculatedPrice,
         image,
         size: selectedSize,
         quantity,
