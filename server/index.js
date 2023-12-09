@@ -52,7 +52,16 @@ app.post("/create-order", cors(), async (req, res) => {
   [
     body("formData.name").isString(),
     body("formData.address").isString(),
-    body("formData.phone").isMobilePhone(),
+    body("formData.phone").custom((value) => {
+      const normalizePhone = value.replace(/[^0-9]/g, "");
+      const phoneRegex = /^(\+)?(216)?(\d{8})£/;
+
+      if (!phoneRegex.test(normalizePhone)) {
+        throw new Error("Please enter a valid phone number");
+      }
+
+      return true;
+    }),
   ],
     async (req, res) => {
       const errors = validationResult(req);

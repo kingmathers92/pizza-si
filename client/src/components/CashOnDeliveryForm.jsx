@@ -34,8 +34,7 @@ export default function CashOnDeliveryForm() {
     }
 
     // Phone number validation with regex
-    const phoneRegex =
-      /^(\()?[2-9]{1}\d{2}(\))?(-|\s)?[2-9]{1}\d{2}(-|\s)\d{4}$/;
+    const phoneRegex = /^(\+)?(216)?(\d{8}|\d{9}|\d{10})$/;
     if (!phoneRegex.test(formData.phone)) {
       alert("Please enter a valid phone number");
       return;
