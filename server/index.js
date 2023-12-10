@@ -18,8 +18,6 @@ admin.initializeApp({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.post("/payment", cors(), async (req, res) => {
@@ -27,27 +25,12 @@ app.post("/payment", cors(), async (req, res) => {
   let { amount, id, items } = req.body;
 
   try {
-    // const amount = items.reduce(
-    //   (total, item) => total + item.price * item.quantity,
-    //   0
-    // );
-
-    // const minimumAmount = 0.5; // Stripe's minimum amount requirement in EUR
-
-    // if (amount < minimumAmount) {
-    //   return res.status(400).json({
-    //     message: "Amount is below the minimum required.",
-    //     success: false,
-    //     loading: false,
-    //   });
-    // }
-
     if (isNaN(amount)) {
       throw new Error("Invalid amount");
     }
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount, // Convert to cents if necessary
+      amount: amount * 100,
       currency: "EUR",
       description: "PizzaSi company",
       payment_method_types: ["card", "ideal"],
