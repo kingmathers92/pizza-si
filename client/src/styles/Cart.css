@@ -10,6 +10,14 @@
   background-size: cover;
 }
 
+.cart-div p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+  margin-top: 20px;
+}
+
 .cart-item {
   border-bottom: 1px solid #ccc;
   padding: 15px 0;

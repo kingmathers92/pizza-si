@@ -3,7 +3,6 @@ import { cleanCart, removeItem } from "../redux/user/userSlice";
 import { selectUserCart } from "../redux/user/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../styles/Cart.css";
@@ -15,9 +14,6 @@ export default function Cart() {
   const { t } = useTranslation();
 
   console.log(cart);
-  useEffect(() => {
-    console.log("Component rendered!");
-  });
 
   const amount = cart.reduce((total, cartItem) => total + cartItem.price, 0);
 
@@ -67,12 +63,14 @@ export default function Cart() {
           onClick={() =>
             navigate("/stripe-checkout", { state: { amount, items: cart } })
           }
+          disabled={cart.length === 0}
         >
           {t("payWithCard")}
         </button>
         <button
           className="btn"
           onClick={() => navigate("/cash-on-delivery", { state: { amount } })}
+          disabled={cart.length === 0}
         >
           {t("cashDelivery")}
         </button>
