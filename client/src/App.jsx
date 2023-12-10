@@ -8,7 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
-import CashOnDeliveryForm from "./components/CashOnDeliveryForm";
+import CashOnDeliveryForm from "./pages/CashOnDeliveryForm";
 import StripeContainer from "./components/StripeContainer";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./utils/ProtectedRoute";

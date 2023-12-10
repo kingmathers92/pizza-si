@@ -1,6 +1,6 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "../pages/CheckoutForm";
 import { useSelector } from "react-redux";
 import { selectUserCart } from "../redux/user/userSlice";
 import { useLocation } from "react-router-dom";
