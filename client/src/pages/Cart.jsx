@@ -59,7 +59,7 @@ export default function Cart() {
       </div>
       <div className="payment-method">
         <button
-          className="btn"
+          className={`btn ${cart.length === 0 ? "disabled" : ""}`}
           onClick={() =>
             navigate("/stripe-checkout", { state: { amount, items: cart } })
           }
@@ -68,7 +68,7 @@ export default function Cart() {
           {t("payWithCard")}
         </button>
         <button
-          className="btn"
+          className={`btn ${cart.length === 0 ? "disabled" : ""}`}
           onClick={() => navigate("/cash-on-delivery", { state: { amount } })}
           disabled={cart.length === 0}
         >

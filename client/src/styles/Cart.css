@@ -119,6 +119,10 @@
   transform: scale(0.99);
 }
 
+.btn.disabled:active {
+  background-color: rgb(224, 23, 23);
+}
+
 @media screen and (max-width: 768px) {
   .cart-div {
     height: auto;
