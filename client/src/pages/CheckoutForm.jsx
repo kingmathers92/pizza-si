@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectLoadingState,
@@ -107,6 +107,9 @@ export default function CheckoutForm({ location }) {
               "Pay"
             )}
           </button>
+          <Link to="/cart">
+            <button className="goBacktBtn">{t("goBack")}</button>
+          </Link>
         </form>
       ) : (
         <div>

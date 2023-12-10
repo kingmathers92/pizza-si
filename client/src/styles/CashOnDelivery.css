@@ -36,8 +36,36 @@ form p {
   font-weight: 600;
   height: 40px;
   margin-top: -40px;
-  background-color: #dab600;
+  background-color: grey;
   color: #121619;
   padding: 0.5rem 1rem;
   border-radius: 4px;
+}
+
+form button {
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.goBacktBtn {
+  background-color: #dab600;
+  color: #121619;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 50px;
+  margin-left: 5.5rem;
+}
+
+.goBacktBtn:hover {
+  background-color: #cbc600;
+}
+
+@media screen and (max-width: 768px) {
+  .goBacktBtn {
+    width: auto;
+    margin-top: 50px;
+    margin-left: 8rem;
+  }
 }

@@ -61,7 +61,9 @@ export default function Cart() {
         <button
           className={`btn ${cart.length === 0 ? "disabled" : ""}`}
           onClick={() =>
-            navigate("/stripe-checkout", { state: { amount, items: cart } })
+            navigate("/stripe-checkout", {
+              state: { state: { amount }, items: cart },
+            })
           }
           disabled={cart.length === 0}
         >

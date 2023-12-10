@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { cleanCart } from "../redux/user/userSlice";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUserCart } from "../redux/user/userSlice";
 import axios from "axios";
@@ -113,8 +113,11 @@ export default function CashOnDeliveryForm() {
       />
       <button type="submit">{t("submitOrder")}</button>
       <p>
-        {t("totalPrice")}: {totalPrice} DT
+        {t("totalPrice")}: {!totalPrice ? "0" : totalPrice} DT
       </p>
+      <Link to="/cart">
+        <button className="goBacktBtn">{t("goBack")}</button>
+      </Link>
     </form>
   );
 }
