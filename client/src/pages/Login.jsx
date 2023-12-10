@@ -23,7 +23,7 @@ function LoginPage() {
       const user = await signInWithGoogle();
       dispatch(signIn(user));
       if (user) {
-        dispatch(updateUserCart({ userId: user.displayName, cartItems: [] }));
+        dispatch(updateUserCart({ cartItems: [] }));
       }
 
       navigate("/menu");

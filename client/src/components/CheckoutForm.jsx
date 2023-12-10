@@ -38,7 +38,7 @@ const CARD_OPTIONS = {
   },
 };
 
-export default function CheckoutForm({ items }) {
+export default function CheckoutForm({ location }) {
   const [success, setSuccess] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector(selectLoadingState);
@@ -47,17 +47,14 @@ export default function CheckoutForm({ items }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const calculateAmount = () => {
-    let totalAmount = 0;
-    items.forEach((item) => {
-      totalAmount += item.price * item.quantity;
-    });
-    return totalAmount;
-  };
+  dispatch(stopLoading());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { amount, items } = location.state;
     dispatch(startLoading());
+
+    console.log("Total Price:", amount);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
@@ -69,7 +66,8 @@ export default function CheckoutForm({ items }) {
         dispatch(startCheckout());
         const { id } = paymentMethod;
         const response = await axios.post("http://localhost:3001/payment", {
-          amount: calculateAmount(),
+          amount: amount,
+          items: items,
           id,
         });
         console.log();
@@ -78,7 +76,7 @@ export default function CheckoutForm({ items }) {
           console.log("Successful payment");
           dispatch(stopLoading());
           setSuccess(true);
-          dispatch(completeCheckout({ items, calculateAmount }));
+          dispatch(completeCheckout({ items, amount }));
           dispatch(cleanCart());
           navigate("/success");
         }
@@ -120,6 +118,10 @@ export default function CheckoutForm({ items }) {
 }
 
 CheckoutForm.propTypes = {
-  amount: PropTypes.number,
-  items: PropTypes.array,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      amount: PropTypes.number.isRequired,
+      items: PropTypes.array.isRequired,
+    }).isRequired,
+  }).isRequired,
 };

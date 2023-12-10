@@ -5,7 +5,7 @@ const initialState = {
   cart: [],
   checkoutStatus: null,
   paymentDetails: null,
-  laoding: false,
+  loading: false,
 };
 
 export const userSlice = createSlice({

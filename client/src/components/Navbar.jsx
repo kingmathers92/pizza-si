@@ -107,7 +107,7 @@ export default function Navbar() {
           </div>
         )}
         <div className="cart-container" onClick={handleCartClick}>
-          <Link to="/cart" exact replace>
+          <Link to="/cart" replace>
             <ShoppingCartIcon fontSize="medium" />
             <p className="cartItemCount">{currentUser ? cart.length : 0}</p>
           </Link>

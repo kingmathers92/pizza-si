@@ -19,10 +19,7 @@ export default function Cart() {
     console.log("Component rendered!");
   });
 
-  const totalPrice = cart.reduce(
-    (total, cartItem) => total + cartItem.price * cartItem.quantity,
-    0
-  );
+  const amount = cart.reduce((total, cartItem) => total + cartItem.price, 0);
 
   const handleCleanCart = () => {
     dispatch(cleanCart());
@@ -43,7 +40,7 @@ export default function Cart() {
             <div className="cart-item-details">
               <h3>{item.name}</h3>
               <p>
-                {t("price")}: {totalPrice}DT
+                {t("price")}: {amount}DT
               </p>
               <p>
                 {t("quantity")}: {item.quantity}
@@ -65,14 +62,17 @@ export default function Cart() {
         </Link>
       </div>
       <div className="payment-method">
-        <button className="btn" onClick={() => navigate("/stripe-checkout")}>
+        <button
+          className="btn"
+          onClick={() =>
+            navigate("/stripe-checkout", { state: { amount, items: cart } })
+          }
+        >
           {t("payWithCard")}
         </button>
         <button
           className="btn"
-          onClick={() =>
-            navigate("/cash-on-delivery", { state: { totalPrice } })
-          }
+          onClick={() => navigate("/cash-on-delivery", { state: { amount } })}
         >
           {t("cashDelivery")}
         </button>

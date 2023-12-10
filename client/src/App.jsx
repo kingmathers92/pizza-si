@@ -14,12 +14,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import SuccessPage from "./pages/SuccessPage";
 import CanceledPage from "./pages/CanceledPage";
-//import { useSelector } from "react-redux";
-//import { selectUserCart } from "../redux/user/userSlice";
 
 function App() {
-  //const cart = useSelector(selectUserCart);
-
   return (
     <Suspense fallback={null}>
       <Router>

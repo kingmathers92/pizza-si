@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
@@ -14,22 +15,47 @@ admin.initializeApp({
   databaseURL: process.env.DB_URL,
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.post("/payment", cors(), async (req, res) => {
-  let { amount, id } = req.body;
+  console.log(req.body);
+  let { amount, id, items } = req.body;
 
   try {
+    // const amount = items.reduce(
+    //   (total, item) => total + item.price * item.quantity,
+    //   0
+    // );
+
+    // const minimumAmount = 0.5; // Stripe's minimum amount requirement in EUR
+
+    // if (amount < minimumAmount) {
+    //   return res.status(400).json({
+    //     message: "Amount is below the minimum required.",
+    //     success: false,
+    //     loading: false,
+    //   });
+    // }
+
+    if (isNaN(amount)) {
+      throw new Error("Invalid amount");
+    }
+
     const paymentIntent = await stripe.paymentIntents.create({
-      amount,
+      amount, // Convert to cents if necessary
       currency: "EUR",
       description: "PizzaSi company",
+      payment_method_types: ["card", "ideal"],
       payment_method: id,
       confirm: true,
       return_url: "http://localhost:3001/success",
     });
+
     console.log("Payment", paymentIntent);
     res.status(200).json({
       message: "Payment successful",
