@@ -83,7 +83,7 @@ export default function CheckoutForm({ location }) {
           setSuccess(true);
           dispatch(completeCheckout({ items, amount }));
           dispatch(cleanCart());
-          navigate("/success");
+          navigate("https://pizzasi.vercel.app/success");
         }
       } catch (error) {
         console.log("Error", error);
