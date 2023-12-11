@@ -51,7 +51,12 @@ export default function CheckoutForm({ location }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { amount, items } = location.state;
+    const { amount, items } = location.state || {};
+
+    if (amount === undefined) {
+      console.error("Amount is undefined in location state");
+      return;
+    }
     dispatch(startLoading());
 
     console.log("Total Price:", amount);

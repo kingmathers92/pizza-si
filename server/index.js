@@ -26,6 +26,7 @@ app.post("/payment", cors(), async (req, res) => {
 
   try {
     if (isNaN(amount)) {
+      console.error("Invalid amount:", amount);
       throw new Error("Invalid amount");
     }
 
