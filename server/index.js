@@ -2,13 +2,18 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
 const cors = require("cors");
 const { body, validationResult } = require("express-validator");
-
 const admin = require("firebase-admin");
-
 const serviceAccount = require("./serviceAccountKey.js");
+
+const stripeSecretKey =
+  process.env.NODE_ENV === "development"
+    ? process.env.STRIPE_SECRET_KEY_TEST
+    : process.env.STRIPE_SECRET_KEY_LIVE;
+
+const stripe = require("stripe")(stripeSecretKey);
+console.log("secret:", stripeSecretKey);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
