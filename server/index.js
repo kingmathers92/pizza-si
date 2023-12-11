@@ -20,7 +20,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.post("/payment", cors(), async (req, res) => {
+const corsOptions = {
+  origin: ["https://pizzasi.vercel.app"],
+  methods: "POST",
+};
+
+app.post("/payment", cors(corsOptions), async (req, res) => {
   console.log(req.body);
   let { amount, id, items } = req.body;
 

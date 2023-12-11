@@ -70,7 +70,7 @@ export default function CheckoutForm({ location }) {
       try {
         dispatch(startCheckout());
         const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:3001/payment", {
+        const response = await axios.post("https://pizzasi.vercel.app/payment", {
           amount: amount,
           items: items,
           id,
@@ -83,7 +83,7 @@ export default function CheckoutForm({ location }) {
           setSuccess(true);
           dispatch(completeCheckout({ items, amount }));
           dispatch(cleanCart());
-          navigate("https://pizzasi.vercel.app/success");
+          navigate("/success");
         }
       } catch (error) {
         console.log("Error", error);
