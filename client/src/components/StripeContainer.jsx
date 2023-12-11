@@ -11,7 +11,6 @@ const stripeKey =
     : import.meta.env.VITE_STRIPE_KEY_LIVE;
 
 const stripeTestPromise = loadStripe(stripeKey);
-console.log("pub:", stripeKey);
 
 export default function StripeContainer() {
   const location = useLocation();

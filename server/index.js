@@ -13,7 +13,6 @@ const stripeSecretKey =
     : process.env.STRIPE_SECRET_KEY_LIVE;
 
 const stripe = require("stripe")(stripeSecretKey);
-console.log("secret:", stripeSecretKey);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
