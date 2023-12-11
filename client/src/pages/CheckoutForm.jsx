@@ -52,11 +52,6 @@ export default function CheckoutForm({ location }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { amount, items } = location.state || {};
-
-    if (amount === undefined) {
-      console.error("Amount is undefined in location state");
-      return;
-    }
     dispatch(startLoading());
 
     console.log("Total Price:", amount);
@@ -70,11 +65,14 @@ export default function CheckoutForm({ location }) {
       try {
         dispatch(startCheckout());
         const { id } = paymentMethod;
-        const response = await axios.post("https://pizzasi.vercel.app/payment", {
-          amount: amount,
-          items: items,
-          id,
-        });
+        const response = await axios.post(
+          "https://pizzasi.vercel.app/payment",
+          {
+            amount: amount,
+            items: items,
+            id,
+          }
+        );
         console.log();
 
         if (response.data.success) {
