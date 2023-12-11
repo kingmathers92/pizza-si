@@ -42,7 +42,7 @@ app.post("/payment", cors(corsOptions), async (req, res) => {
       payment_method_types: ["card", "ideal"],
       payment_method: id,
       confirm: true,
-      return_url: "http://localhost:3001/success",
+      return_url: "https://pizzasi.vercel.app/success",
     });
 
     console.log("Payment", paymentIntent);
