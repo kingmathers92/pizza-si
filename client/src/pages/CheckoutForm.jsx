@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,6 +40,7 @@ const CARD_OPTIONS = {
 
 export default function CheckoutForm({ location }) {
   const [success, setSuccess] = useState(false);
+  const [formReady, setFormReady] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector(selectLoadingState);
   const stripe = useStripe();
@@ -47,8 +48,17 @@ export default function CheckoutForm({ location }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    setFormReady(true);
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formReady) {
+      return;
+    }
+
     const { amount, items } = location.state || {};
     dispatch(startLoading());
 
@@ -98,7 +108,7 @@ export default function CheckoutForm({ location }) {
         <form onSubmit={handleSubmit}>
           <fieldset className="form-group">
             <div className="form-row">
-              {!loading && <CardElement options={CARD_OPTIONS} />}
+              {formReady && <CardElement options={CARD_OPTIONS} />}
             </div>
           </fieldset>
           <button className="payBtn" type="submit">
