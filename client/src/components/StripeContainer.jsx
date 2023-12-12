@@ -5,12 +5,12 @@ import { useSelector } from "react-redux";
 import { selectUserCart } from "../redux/user/userSlice";
 import { useLocation } from "react-router-dom";
 
-// const stripeKey =
-//   import.meta.env.MODE === "development"
-//     ? import.meta.env.VITE_STRIPE_KEY_TEST
-//     : import.meta.env.VITE_STRIPE_KEY_LIVE;
+const stripeKey =
+  import.meta.env.MODE === "development"
+    ? import.meta.env.VITE_STRIPE_KEY_TEST
+    : import.meta.env.VITE_STRIPE_KEY_LIVE;
 
-const stripeTestPromise = loadStripe(import.meta.env.VITE_STRIPE_KEY_TEST);
+const stripeTestPromise = loadStripe(stripeKey);
 
 export default function StripeContainer() {
   const location = useLocation();
