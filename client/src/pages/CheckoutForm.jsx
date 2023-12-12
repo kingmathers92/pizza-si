@@ -40,7 +40,7 @@ const CARD_OPTIONS = {
 
 export default function CheckoutForm({ location }) {
   const [success, setSuccess] = useState(false);
-  const [formReady, setFormReady] = useState(false);
+  const [formReady, setFormReady] = useState(true);
   const dispatch = useDispatch();
   const loading = useSelector(selectLoadingState);
   const stripe = useStripe();
