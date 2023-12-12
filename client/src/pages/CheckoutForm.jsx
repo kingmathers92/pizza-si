@@ -94,11 +94,11 @@ export default function CheckoutForm({ location }) {
 
   return (
     <div className="container">
-      {!success && !loading ? (
+      {!success && (
         <form onSubmit={handleSubmit}>
           <fieldset className="form-group">
             <div className="form-row">
-              <CardElement options={CARD_OPTIONS} />
+              {!loading && <CardElement options={CARD_OPTIONS} />}
             </div>
           </fieldset>
           <button className="payBtn" type="submit">
@@ -112,7 +112,8 @@ export default function CheckoutForm({ location }) {
             <button className="goBacktBtn">{t("goBack")}</button>
           </Link>
         </form>
-      ) : (
+      )}
+      {success && (
         <div>
           <h2>{t("paymentSuccess")}</h2>
         </div>
