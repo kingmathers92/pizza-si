@@ -50,6 +50,19 @@ app.post("/payment", cors(corsOptions), async (req, res) => {
     });
 
     console.log("Payment", paymentIntent);
+
+    if (paymentIntent.status === "requires_payment_method") {
+      return res.status(402).json({
+        message: "Card declined",
+        success: false,
+        loading: false,
+        error: {
+          code: "payment_intent_payment_failure",
+          message: "Card declined",
+        },
+      });
+    }
+
     res.status(200).json({
       message: "Payment successful",
       success: true,
