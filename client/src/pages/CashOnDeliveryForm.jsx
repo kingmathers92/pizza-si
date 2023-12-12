@@ -23,7 +23,7 @@ export default function CashOnDeliveryForm() {
     additionalInfo: "",
   });
 
-  const { totalPrice } = location.state || { totalPrice: 0 };
+  const { amount } = location.state || { amount: 0 };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ export default function CashOnDeliveryForm() {
     const orderDetails = {
       cartItems: cart,
       formData: formData,
-      totalPrice: totalPrice,
+      amount: amount,
     };
 
     try {
@@ -113,7 +113,7 @@ export default function CashOnDeliveryForm() {
       />
       <button type="submit">{t("submitOrder")}</button>
       <p>
-        {t("totalPrice")}: {!totalPrice ? "0" : totalPrice} DT
+        {t("totalPrice")}: {!amount ? "0" : amount} DT
       </p>
       <Link to="/cart">
         <button className="goBacktBtn">{t("goBack")}</button>
