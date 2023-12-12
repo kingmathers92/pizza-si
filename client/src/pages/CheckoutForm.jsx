@@ -96,9 +96,17 @@ export default function CheckoutForm({ location }) {
         dispatch(stopLoading());
         dispatch(cancelCheckout());
         navigate("/canceled");
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.error.code === "payment_intent_payment_failure"
+        ) {
+          console.log("Card was declined");
+          navigate("/canceled");
+        } else {
+          console.error("Failed to process payment:", error);
+        }
       }
-    } else {
-      console.log(error.message);
     }
   };
 
