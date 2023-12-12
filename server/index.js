@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 const corsOptions = {
-  origin: ["https://pizzasi.vercel.app/"],
+  origin: ["https://pizzasi.vercel.app"],
   methods: "POST",
 };
 
