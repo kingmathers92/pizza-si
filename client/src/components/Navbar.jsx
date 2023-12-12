@@ -31,6 +31,10 @@ export default function Navbar() {
     setOpenMenu((prevOpenMenu) => !prevOpenMenu);
   };
 
+  const handleNavLinkClick = () => {
+    setOpenMenu(false);
+  };
+
   const handleCartClick = (e) => {
     if (!openMenu) {
       e.stopPropagation();
@@ -61,10 +65,18 @@ export default function Navbar() {
 
   const commonLinks = (
     <>
-      <Link to="/">{t("home")}</Link>
-      <Link to="/menu">{t("menu")}</Link>
-      <Link to="/about">{t("about")}</Link>
-      <Link to="/contact">{t("contact")}</Link>
+      <Link to="/" onClick={handleNavLinkClick}>
+        {t("home")}
+      </Link>
+      <Link to="/menu" onClick={handleNavLinkClick}>
+        {t("menu")}
+      </Link>
+      <Link to="/about" onClick={handleNavLinkClick}>
+        {t("about")}
+      </Link>
+      <Link to="/contact" onClick={handleNavLinkClick}>
+        {t("contact")}
+      </Link>
     </>
   );
 

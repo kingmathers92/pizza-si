@@ -47,8 +47,6 @@ export default function CheckoutForm({ location }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  dispatch(stopLoading());
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { amount, items } = location.state || {};
@@ -95,7 +93,7 @@ export default function CheckoutForm({ location }) {
   };
 
   return (
-    <div>
+    <div className="container">
       {!success && !loading ? (
         <form onSubmit={handleSubmit}>
           <fieldset className="form-group">
