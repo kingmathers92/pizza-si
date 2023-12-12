@@ -108,14 +108,10 @@ export default function CheckoutForm({ location }) {
         <form onSubmit={handleSubmit}>
           <fieldset className="form-group">
             <div className="form-row">
-              {formReady && <CardElement options={CARD_OPTIONS} />}
+              <CardElement options={CARD_OPTIONS} />
             </div>
           </fieldset>
-          <button
-            className="payBtn"
-            type="submit"
-            disabled={!formReady || loading}
-          >
+          <button className="payBtn" type="submit" disabled={loading}>
             {loading ? (
               <Loader type="Oval" color="#FFF" height={20} width={20} />
             ) : (
