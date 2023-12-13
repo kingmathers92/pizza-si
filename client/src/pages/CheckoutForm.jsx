@@ -58,7 +58,6 @@ export default function CheckoutForm({ location }) {
     }
 
     const { amount, items } = location.state || {};
-    setLoading(true);
 
     console.log("Total Price:", amount);
 
