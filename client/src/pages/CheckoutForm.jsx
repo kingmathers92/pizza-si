@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  selectLoadingState,
+  startLoading,
+  stopLoading,
   startCheckout,
   completeCheckout,
   cancelCheckout,
@@ -38,9 +41,8 @@ const CARD_OPTIONS = {
 export default function CheckoutForm({ location }) {
   const [success, setSuccess] = useState(false);
   const [formReady, setFormReady] = useState(false);
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  //const loading = useSelector(selectLoadingState);
+  const loading = useSelector(selectLoadingState);
   const stripe = useStripe();
   const elements = useElements();
   const navigate = useNavigate();
@@ -58,6 +60,8 @@ export default function CheckoutForm({ location }) {
     }
 
     const { amount, items } = location.state || {};
+
+    dispatch(startLoading());
 
     console.log("Total Price:", amount);
 
@@ -78,11 +82,9 @@ export default function CheckoutForm({ location }) {
             id,
           }
         );
-        console.log();
 
         if (response.data.success) {
           console.log("Successful payment");
-          setLoading(false);
           setSuccess(true);
           dispatch(completeCheckout({ items, amount }));
           dispatch(cleanCart());
@@ -90,7 +92,6 @@ export default function CheckoutForm({ location }) {
         }
       } catch (error) {
         console.log("Error", error);
-        setLoading(false);
         dispatch(cancelCheckout());
         navigate("/canceled");
         if (
@@ -99,11 +100,15 @@ export default function CheckoutForm({ location }) {
           error.response.data.error.code === "payment_intent_payment_failure"
         ) {
           console.log("Card was declined");
-          navigate("/canceled");
         } else {
           console.error("Failed to process payment:", error);
         }
+      } finally {
+        dispatch(stopLoading());
       }
+    } else {
+      console.log(error.message);
+      dispatch(stopLoading());
     }
   };
 
