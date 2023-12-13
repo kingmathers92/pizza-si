@@ -40,7 +40,7 @@ const CARD_OPTIONS = {
 
 export default function CheckoutForm({ location }) {
   const [success, setSuccess] = useState(false);
-  const [formReady, setFormReady] = useState(true);
+  const [formReady, setFormReady] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector(selectLoadingState);
   const stripe = useStripe();
@@ -120,7 +120,7 @@ export default function CheckoutForm({ location }) {
             </div>
           </fieldset>
           <button className="payBtn" type="submit">
-            {loading || !success ? (
+            {loading ? (
               <Loader type="Oval" color="#FFF" height={20} width={20} />
             ) : (
               "Pay"
