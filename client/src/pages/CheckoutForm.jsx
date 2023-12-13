@@ -114,29 +114,26 @@ export default function CheckoutForm({ location }) {
 
   return (
     <div className="container">
-      {!success && !loading ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset className="form-group">
-            <div className="form-row">
-              {formReady && <CardElement options={CARD_OPTIONS} />}
-            </div>
-          </fieldset>
-          <button className="payBtn" type="submit">
-            {loading ? (
-              <Loader type="Oval" color="#FFF" height={20} width={20} />
-            ) : (
-              "Pay"
-            )}
-          </button>
-          <Link to="/cart">
-            <button className="goBacktBtn">{t("goBack")}</button>
-          </Link>
-        </form>
-      ) : (
-        <div>
-          <h2>{t("paymentSuccess")}</h2>
-        </div>
-      )}
+      {!success ||
+        (!loading && (
+          <form onSubmit={handleSubmit}>
+            <fieldset className="form-group">
+              <div className="form-row">
+                {formReady && <CardElement options={CARD_OPTIONS} />}
+              </div>
+            </fieldset>
+            <button className="payBtn" type="submit">
+              {loading ? (
+                <Loader type="Oval" color="#FFF" height={20} width={20} />
+              ) : (
+                "Pay"
+              )}
+            </button>
+            <Link to="/cart">
+              <button className="goBacktBtn">{t("goBack")}</button>
+            </Link>
+          </form>
+        ))}
     </div>
   );
 }
