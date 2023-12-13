@@ -120,7 +120,7 @@ export default function CheckoutForm({ location }) {
             </div>
           </fieldset>
           <button className="payBtn" type="submit">
-            {loading ? (
+            {loading || !success ? (
               <Loader type="Oval" color="#FFF" height={20} width={20} />
             ) : (
               "Pay"
