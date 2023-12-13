@@ -48,12 +48,15 @@ export default function Navbar() {
   }, [currentUser]);
 
   const handleSignInRedirect = () => {
+    setOpenMenu(false);
     navigate("/login");
   };
 
   const handleSignOut = async () => {
     try {
       localStorage.removeItem("userImage");
+
+      setOpenMenu(false);
 
       const user = await signOut();
       dispatch(performingSignOut(user));
