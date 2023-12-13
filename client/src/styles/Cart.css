@@ -158,4 +158,8 @@
     width: auto;
     margin-top: 5px;
   }
+
+  .goBacktBtn {
+    margin-right: 120px;
+  }
 }
